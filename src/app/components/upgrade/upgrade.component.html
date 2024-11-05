@@ -1,0 +1,11 @@
+<div class="upgrades">
+    <h2>Mejoras</h2>
+    <div *ngFor="let upgrade of (upgrades$ | async)">
+      <div class="upgrade-item">
+        <h3>{{ upgrade.name }}</h3>
+        <p>{{ upgrade.description }}</p>
+        <p>Costo: {{ upgrade.cost }} Monedas</p>
+        <button (click)="buyUpgrade(upgrade)">Comprar</button>
+      </div>
+    </div>
+  </div>
