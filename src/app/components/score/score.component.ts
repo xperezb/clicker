@@ -4,15 +4,8 @@ import { GameService } from '../../services/game.service';
 @Component({
   selector: 'app-score',
   standalone: true,
-  template: `<h2>Puntaje: {{ points }}</h2>`,
-  styles: [
-    `
-      h2 {
-        font-size: 28px;
-        margin-top: 20px;
-      }
-    `,
-  ],
+  templateUrl: './score.component.html',
+  styleUrls: ['./score.component.css'],
 })
 export class ScoreComponent implements OnInit {
   points: number = 0;

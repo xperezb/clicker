@@ -4,17 +4,8 @@ import { GameService } from '../../services/game.service';
 @Component({
   selector: 'app-clicker',
   standalone: true,
-  template: `<button (click)="handleClick()">Click me!</button>`,
-  styles: [
-    `
-      button {
-        font-size: 24px;
-        padding: 10px 20px;
-        margin-top: 20px;
-        cursor: pointer;
-      }
-    `,
-  ],
+  templateUrl: './clicker.component.html',
+  styleUrls: ['./clicker.component.css'],
 })
 export class ClickerComponent {
   constructor(private gameService: GameService) {}

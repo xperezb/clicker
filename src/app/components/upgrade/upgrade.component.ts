@@ -12,36 +12,35 @@ import { CommonModule } from '@angular/common';
 export class UpgradesComponent implements OnInit {
   upgradeCount: number = 0;
   upgradeCost: number = 0;
-  pointsPerSecond: number = 0; // Añadido para mostrar los puntos por segundo
+  pointsPerSecond: number = 0;
 
   constructor(private gameService: GameService) {}
 
   ngOnInit() {
-    this.subscribeToUpgradeCount();
-    this.subscribeToPoints();
-    this.subscribeToUpgradeCost();
+    this.getUpgradeCount();
+    this.getPointsPerSecond();
+    this.getUpgradeCost();
   }
 
-  private subscribeToUpgradeCount() {
+  public buyUpgrade() {
+    this.gameService.buyUpgrade(1);
+  }
+
+  private getUpgradeCount() {
     this.gameService.upgradeCount$.subscribe((count) => {
         this.upgradeCount = count;
     });
   }
 
-  // Actualizar los puntos por segundo
-  private subscribeToPoints() {
-    this.gameService.points$.subscribe(() => {
-        this.pointsPerSecond = this.gameService.pointsPerSecond;
+  private getPointsPerSecond() {
+    this.gameService.pointsPerSecond$.subscribe((pointsPerSecond) => {
+        this.pointsPerSecond = pointsPerSecond;
     });
   }
 
-  private subscribeToUpgradeCost() {
+  private getUpgradeCost() {
     this.gameService.upgradeCost$.subscribe((cost) => {
         this.upgradeCost = cost;
     });
-  }
-
-  buyUpgrade() {
-    this.gameService.buyUpgrade(1);
   }
 }
