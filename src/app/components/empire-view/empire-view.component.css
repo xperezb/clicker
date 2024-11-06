@@ -1,3 +1,9 @@
 .container {
   margin-top: 1rem;
 }
+
+/* empire-view.component.css */
+canvas {
+  background-image: url('https://img.freepik.com/premium-vector/pixel-art-landscapes-flower-field-background_52683-125359.jpg');
+  background-size: cover; /* Ajusta la imagen para cubrir todo el canvas */
+}

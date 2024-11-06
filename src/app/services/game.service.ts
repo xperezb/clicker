@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,11 @@ export class GameService {
   pointsPerClick$ = new BehaviorSubject<number>(this.pointsPerClick);
   upgradeCost$ = new BehaviorSubject<number>(this.upgradeCost);
   clickUpgradeCost$ = new BehaviorSubject<number>(this.clickUpgradeCost);
+
+  private drawDotSubject = new Subject<{ x: number, y: number }>();
+  drawDot$ = this.drawDotSubject.asObservable();
+  private dotCount = 0; 
+
 
   constructor() {
     setInterval(() => {
@@ -63,6 +68,13 @@ export class GameService {
       this.pointsPerSecond$.next(this.pointsPerSecond);
       this.upgradeCount$.next(this.upgradeCount);
       this.upgradeCost$.next(this.upgradeCost);
+
+      // Calculate the position for the new dot
+      const x = (this.dotCount % 10) * 50 + 25; // 50px apart, starting at 25px
+      const y = Math.floor(this.dotCount / 10) * 50 + 25; // 50px apart, starting at 25px
+      this.drawDotSubject.next({ x, y });
+
+      this.dotCount += 1; // Increment the dot counter
     }
   }
 
