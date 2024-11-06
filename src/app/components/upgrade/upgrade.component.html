@@ -1,8 +1,9 @@
 <h2>Mejoras de puntos por segundo</h2>
-<p>Has comprado {{upgradeCount}} mejoras</p>
-<div>
-  <button (click)="buyUpgrade()">
-    Mejora (+1 punto/seg, costo: {{ upgradeCost }} puntos)
-    <span *ngIf="upgradeCount > 0">(+{{ pointsPerSecond }} p/s)</span>
-  </button>
+<div *ngFor="let upgrade of upgrades">
+  <div *ngIf="upgrade.requiredPoints <= totalPoints">
+    <button (click)="buyUpgrade(upgrade.id)" [disabled]="upgrade.cost > points">
+      {{ upgrade.name }} (+{{ upgrade.increase }}$/s, {{ upgrade.cost }}$)
+      <span *ngIf="upgrade.count > 0">(+{{ pointsPerSecond }} $/s)</span>
+    </button> {{ upgrade.count }}
+  </div>
 </div>

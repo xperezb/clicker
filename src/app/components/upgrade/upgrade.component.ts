@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { CommonModule } from '@angular/common';
+import { Upgrade } from '../../interfaces/upgrade';
 
 @Component({
   selector: 'app-upgrades',
@@ -10,37 +11,45 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./upgrade.component.css'],
 })
 export class UpgradesComponent implements OnInit {
-  upgradeCount: number = 0;
-  upgradeCost: number = 0;
+  upgrades: Upgrade[] = [];
   pointsPerSecond: number = 0;
+  points: number = 0;
+  totalPoints: number = 0;
 
   constructor(private gameService: GameService) {}
 
   ngOnInit() {
-    this.getUpgradeCount();
+    this.getUpgrades();
     this.getPointsPerSecond();
-    this.getUpgradeCost();
+    this.getTotalPoints();
+    this.getPoints();
   }
 
-  public buyUpgrade() {
-    this.gameService.buyUpgrade(1);
+  public buyUpgrade(upgradeId: number) {
+    this.gameService.buyUpgrade(upgradeId);
   }
 
-  private getUpgradeCount() {
-    this.gameService.upgradeCount$.subscribe((count) => {
-        this.upgradeCount = count;
+  private getUpgrades() {
+    this.gameService.upgrades$.subscribe((upgrades) => {
+      this.upgrades = upgrades;
     });
   }
 
   private getPointsPerSecond() {
     this.gameService.pointsPerSecond$.subscribe((pointsPerSecond) => {
-        this.pointsPerSecond = pointsPerSecond;
+      this.pointsPerSecond = pointsPerSecond;
     });
   }
 
-  private getUpgradeCost() {
-    this.gameService.upgradeCost$.subscribe((cost) => {
-        this.upgradeCost = cost;
+  private getTotalPoints() {
+    this.gameService.totalPoints$.subscribe((totalPoints) => {
+      this.totalPoints = totalPoints;
+    });
+  }
+
+  private getPoints() {
+    this.gameService.points$.subscribe((points) => {
+      this.points = points;
     });
   }
 }
