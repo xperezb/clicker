@@ -5,6 +5,7 @@ import { ScoreComponent } from './components/score/score.component';
 import { UpgradesComponent } from './components/upgrade/upgrade.component';
 import { GameService } from './services/game.service';
 import { ClickUpgradesComponent } from './components/click-upgrade/click-upgrade.component';
+import { EmpireViewComponent } from './components/empire-view/empire-view.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ import { ClickUpgradesComponent } from './components/click-upgrade/click-upgrade
     ClickerComponent,
     ScoreComponent,
     UpgradesComponent,
-    ClickUpgradesComponent
+    ClickUpgradesComponent,
+    EmpireViewComponent
   ],
   providers: [GameService],
   templateUrl: './app.component.html',
