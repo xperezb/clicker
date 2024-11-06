@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { CommonModule } from '@angular/common';
 import { Upgrade } from '../../interfaces/upgrade';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-click-upgrades',
@@ -11,45 +12,25 @@ import { Upgrade } from '../../interfaces/upgrade';
   styleUrls: ['./click-upgrade.component.css'],
 })
 export class ClickUpgradesComponent implements OnInit {
-  clickUpgrades: Upgrade[] = [];
-  pointsPerClick: number = 1;
-  points: number = 0;
-  totalPoints: number = 0;
+  clickUpgrades$?: Observable<Upgrade[]>;
+  pointsPerClick$?: Observable<number>;
+  points$?: Observable<number>;
+  totalPoints$?: Observable<number>;
 
-  constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService) {  }
 
   ngOnInit() {
-    this.getClickUpgrades();
-    this.getPointsPerClick();
-    this.getTotalPoints();
-    this.getPoints();
+    this.getValues();
   }
 
   public buyClickUpgrade(upgradeId: number) {
     this.gameService.buyClickUpgrade(upgradeId);
   }
 
-  private getClickUpgrades() {
-    this.gameService.clickUpgrades$.subscribe((clickUpgrades) => {
-      this.clickUpgrades = clickUpgrades;
-    });
-  }
-
-  private getPointsPerClick() {
-    this.gameService.pointsPerClick$.subscribe((pointsPerClick) => {
-      this.pointsPerClick = pointsPerClick;
-    });
-  }
-
-  private getTotalPoints() {
-    this.gameService.totalPoints$.subscribe((totalPoints) => {
-      this.totalPoints = totalPoints;
-    });
-  }
-
-  private getPoints() {
-    this.gameService.points$.subscribe((points) => {
-      this.points = points;
-    });
+  private getValues() {
+    this.clickUpgrades$ = this.gameService.clickUpgrades$;
+    this.pointsPerClick$ = this.gameService.pointsPerClick$;
+    this.points$ = this.gameService.points$;
+    this.totalPoints$ = this.gameService.totalPoints$;
   }
 }

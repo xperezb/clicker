@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-score',
@@ -10,13 +11,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./score.component.css'],
 })
 export class ScoreComponent implements OnInit {
-  points: number = 0;
-
+  points$?: Observable<number>;
+  
   constructor(private gameService: GameService) {}
 
   ngOnInit() {
-    this.gameService.points$.subscribe((points) => {
-      this.points = points;
-    });
+    this.points$ = this.gameService.points$;
   }
 }

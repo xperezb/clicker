@@ -1,9 +1,9 @@
 <h2>Hire Resources</h2>
-<div *ngFor="let upgrade of clickUpgrades">
-  <div *ngIf="upgrade.requiredPoints <= totalPoints">
-    <button (click)="buyClickUpgrade(upgrade.id)" [disabled]="upgrade.cost > points">
-      {{ upgrade.name }} (+{{ upgrade.increase }}$/deal, {{ upgrade.cost }}$)
-      <span *ngIf="upgrade.count > 0">(+{{ pointsPerClick }}$/deal)</span>
+<div *ngFor="let upgrade of clickUpgrades$ | async">
+  <div *ngIf="upgrade.requiredPoints <= ((totalPoints$ | async) ?? 0)">
+    <button (click)="buyClickUpgrade(upgrade.id)" [disabled]="upgrade.cost > ((points$ | async) ?? 0)">
+      {{ upgrade.name }} {{ upgrade.cost }}$ (+{{ upgrade.increase }}$/deal)
+      <!-- <span *ngIf="upgrade.count > 0">(+{{ ((pointsPerClick$ | async) ?? 0) }}$/deal)</span> -->
     </button> {{ upgrade.count }}
   </div>
 </div>

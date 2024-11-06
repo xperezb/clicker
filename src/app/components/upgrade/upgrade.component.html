@@ -1,9 +1,10 @@
 <h2>Invest in Drug Empire</h2>
-<div *ngFor="let upgrade of upgrades">
-  <div *ngIf="upgrade.requiredPoints <= totalPoints">
-    <button (click)="buyUpgrade(upgrade.id)" [disabled]="upgrade.cost > points">
-      {{ upgrade.name }} (+{{ upgrade.increase }}$/week, {{ upgrade.cost }}$)
-      <span *ngIf="upgrade.count > 0">(+{{ pointsPerSecond }} $/week)</span>
-    </button> {{ upgrade.count }}
+<div *ngFor="let upgrade of upgrades$ | async">
+  <div *ngIf="upgrade.requiredPoints <= ((totalPoints$ | async) ?? 0)">
+    {{ upgrade.count }}
+    <button (click)="buyUpgrade(upgrade.id)" [disabled]="upgrade.cost > ((points$ | async) ?? 0)">
+       {{ upgrade.name }} {{ upgrade.cost }}$ (+{{ upgrade.increase }}$/week)
+      <!-- <span *ngIf="upgrade.count > 0">(+{{ ((pointsPerSecond$ | async) ?? 0) }} $/week)</span> -->
+    </button> 
   </div>
 </div>
