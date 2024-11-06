@@ -1,9 +1,9 @@
-<h2>Mejoras de click</h2>
+<h2>Hire Resources</h2>
 <div *ngFor="let upgrade of clickUpgrades">
   <div *ngIf="upgrade.requiredPoints <= totalPoints">
     <button (click)="buyClickUpgrade(upgrade.id)" [disabled]="upgrade.cost > points">
-      {{ upgrade.name }} (+{{ upgrade.increase }} puntos/click, {{ upgrade.cost }} puntos)
-      <span *ngIf="upgrade.count > 0">(+{{ pointsPerClick }} puntos/click)</span>
+      {{ upgrade.name }} (+{{ upgrade.increase }}$/deal, {{ upgrade.cost }}$)
+      <span *ngIf="upgrade.count > 0">(+{{ pointsPerClick }}$/deal)</span>
     </button> {{ upgrade.count }}
   </div>
 </div>

@@ -1,9 +1,9 @@
-<h2>Mejoras de puntos por segundo</h2>
+<h2>Invest in Drug Empire</h2>
 <div *ngFor="let upgrade of upgrades">
   <div *ngIf="upgrade.requiredPoints <= totalPoints">
     <button (click)="buyUpgrade(upgrade.id)" [disabled]="upgrade.cost > points">
-      {{ upgrade.name }} (+{{ upgrade.increase }}$/s, {{ upgrade.cost }}$)
-      <span *ngIf="upgrade.count > 0">(+{{ pointsPerSecond }} $/s)</span>
+      {{ upgrade.name }} (+{{ upgrade.increase }}$/week, {{ upgrade.cost }}$)
+      <span *ngIf="upgrade.count > 0">(+{{ pointsPerSecond }} $/week)</span>
     </button> {{ upgrade.count }}
   </div>
 </div>

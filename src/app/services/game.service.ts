@@ -23,11 +23,14 @@ export class GameService {
   ];
 
   clickUpgrades: Upgrade[] = [
-    { id: 1, name: 'Click Upgrade', cost: 10, increase: 1, count: 0, requiredPoints: 0 },
-    { id: 2, name: 'Click Upgrade', cost: 50, increase: 5, count: 0, requiredPoints: 100 },
-    { id: 3, name: 'Click Upgrade', cost: 100, increase: 10, count: 0, requiredPoints: 200 },
-    { id: 4, name: 'Click Upgrade', cost: 500, increase: 50, count: 0, requiredPoints: 300 },
-    { id: 5, name: 'Click Upgrade', cost: 1000, increase: 100, count: 0, requiredPoints: 400 }
+    { id: 1, name: 'Bike', cost: 10, increase: 1, count: 0, requiredPoints: 0 },
+    { id: 2, name: 'MotorBike', cost: 50, increase: 5, count: 0, requiredPoints: 100 },
+    { id: 3, name: 'Ahmed', cost: 100, increase: 10, count: 0, requiredPoints: 200 },
+    { id: 4, name: 'M13 Gang Member', cost: 500, increase: 50, count: 0, requiredPoints: 300 },
+    { id: 5, name: '18ST Gang Member', cost: 500, increase: 50, count: 0, requiredPoints: 300 },
+    { id: 6, name: 'Pick-up Truck', cost: 1000, increase: 100, count: 0, requiredPoints: 400 },
+    { id: 7, name: 'Local Police Officer', cost: 5000, increase: 1500, count: 0, requiredPoints: 1000 }
+
   ];
 
   points$ = new BehaviorSubject<number>(this.points);
@@ -66,11 +69,10 @@ export class GameService {
 
   addPoints(points: number) {
     this.points += points;
-    this.totalPoints += points; // Actualizar la puntuación total
+    this.totalPoints += points;
     this.points$.next(this.points);
     this.totalPoints$.next(this.totalPoints);
-    console.log(this.totalPoints) // Emitir la puntuación total
-    this.updateAvailableUpgrades(); // Actualizar upgrades disponibles
+    this.updateAvailableUpgrades(); 
     this.updateAvailableClickUpgrades();
   }
 
