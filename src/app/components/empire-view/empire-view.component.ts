@@ -1,34 +1,26 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GameService } from '../../services/game.service';
+import { FarmComponent } from './components/farm.component';
 
 @Component({
   selector: 'app-empire-view',
   standalone: true,
+  imports:  [FarmComponent],
   templateUrl: './empire-view.component.html',
   styleUrls: ['./empire-view.component.css'],
 })
-export class EmpireViewComponent implements AfterViewInit, OnInit, OnDestroy {
-  @ViewChild('canvas', { static: true })
-  canvas!: ElementRef<HTMLCanvasElement>;
-  private ctx!: CanvasRenderingContext2D;
+export class EmpireViewComponent implements OnInit, OnDestroy {
+  @ViewChild('canvas', { static: true, read: ViewContainerRef })
+  canvasContainer!: ViewContainerRef;
   private drawDotSubscription!: Subscription;
 
   constructor(private gameService: GameService) {}
 
   ngOnInit() {
     this.drawDotSubscription = this.gameService.drawDot$.subscribe(({ x, y }) => {
-      this.drawBlackDot(x, y);
+      this.addFarmComponent(x, y);
     });
-  }
-
-  ngAfterViewInit() {
-    const context = this.canvas.nativeElement.getContext('2d');
-    if (context) {
-      this.ctx = context;
-    } else {
-      throw new Error('Failed to get 2D context');
-    }
   }
 
   ngOnDestroy() {
@@ -37,12 +29,11 @@ export class EmpireViewComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   }
 
-  drawBlackDot(x: number, y: number) {
-    if (this.ctx) {
-      this.ctx.fillStyle = 'black';
-      this.ctx.beginPath();
-      this.ctx.arc(x, y, 5, 0, Math.PI * 2, true);
-      this.ctx.fill();
-    }
+  addFarmComponent(x: number, y: number) {
+    const componentRef = this.canvasContainer.createComponent(FarmComponent);
+    const element = (componentRef.hostView as any).rootNodes[0] as HTMLElement;
+    element.style.position = 'relative';
+    element.style.left = `${x}px`;
+    element.style.top = `${y}px`;
   }
 }
