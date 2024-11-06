@@ -42,6 +42,7 @@ export class GameService {
   clickUpgradeCost$ = new BehaviorSubject<number>(this.clickUpgradeCost);
   upgrades$ = new BehaviorSubject<Upgrade[]>(this.upgrades);
   clickUpgrades$ = new BehaviorSubject<Upgrade[]>(this.clickUpgrades);
+  achievements$ = new BehaviorSubject<Upgrade[]>([]);
 
   constructor() {
     setInterval(() => {
@@ -92,6 +93,8 @@ export class GameService {
       this.points$.next(this.points);
       this.pointsPerSecond$.next(this.pointsPerSecond);
       this.upgrades$.next(this.upgrades);
+
+      this.addAchievement(upgrade);
     }
   }
 
@@ -106,6 +109,15 @@ export class GameService {
       this.points$.next(this.points);
       this.pointsPerClick$.next(this.pointsPerClick);
       this.clickUpgrades$.next(this.clickUpgrades);
+
+      this.addAchievement(upgrade);
+    }
+  }
+
+  private addAchievement(upgrade: Upgrade) {
+    if (upgrade.count === 1) {  
+      const currentAchievements = this.achievements$.getValue();
+      this.achievements$.next([...currentAchievements, upgrade]);
     }
   }
 
