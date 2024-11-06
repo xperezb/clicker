@@ -1,0 +1,7 @@
+<h2>Mejoras de click</h2>
+<div>
+  <button (click)="buyUpgrade()">
+    Mejora (+1 punto/click, costo: {{ clickUpgradeCost }} puntos)
+    <span *ngIf="clickUpgradeCost > 0">(+{{ pointsPerClick }} p/c)</span>
+  </button>
+</div>

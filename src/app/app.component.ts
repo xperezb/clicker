@@ -4,6 +4,7 @@ import { ClickerComponent } from './components/clicker/clicker.component';
 import { ScoreComponent } from './components/score/score.component';
 import { UpgradesComponent } from './components/upgrade/upgrade.component';
 import { GameService } from './services/game.service';
+import { ClickUpgradesComponent } from './components/click-upgrade/click-upgrade.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ import { GameService } from './services/game.service';
     RouterOutlet,
     ClickerComponent,
     ScoreComponent,
-    UpgradesComponent
+    UpgradesComponent,
+    ClickUpgradesComponent
   ],
   providers: [GameService],
   templateUrl: './app.component.html',

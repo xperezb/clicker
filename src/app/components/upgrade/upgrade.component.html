@@ -1,11 +1,7 @@
-<div class="upgrades">
-    <h2>Mejoras</h2>
-    <div *ngFor="let upgrade of (upgrades$ | async)">
-      <div class="upgrade-item">
-        <h3>{{ upgrade.name }}</h3>
-        <p>{{ upgrade.description }}</p>
-        <p>Costo: {{ upgrade.cost }} Monedas</p>
-        <button (click)="buyUpgrade(upgrade)">Comprar</button>
-      </div>
-    </div>
-  </div>
+<h2>Mejoras de puntos por segundo</h2>
+<div>
+  <button (click)="buyUpgrade()">
+    Mejora (+1 punto/seg, costo: {{ upgradeCost }} puntos)
+    <span *ngIf="upgradeCount > 0">(+{{ pointsPerSecond }} p/s)</span>
+  </button>
+</div>
