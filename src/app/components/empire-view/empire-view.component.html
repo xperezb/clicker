@@ -1,5 +1,7 @@
 <div class="container">
-  @for (farm of [].constructor(farmCount).slice(0, 8); track farm) {
-    <app-farm class="farm"></app-farm>
+  @for (upgrade of upgrades; track upgrade) {
+    <ng-container *ngFor="let i of [].constructor(upgrade.count).slice(0, 8)">
+      <ng-container *ngComponentOutlet="upgrade.icon ?? null"></ng-container>
+    </ng-container>
   }
 </div>

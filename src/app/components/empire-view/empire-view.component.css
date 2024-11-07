@@ -2,16 +2,16 @@
   margin-top: 1rem;
   background-image: url('https://img.freepik.com/premium-vector/pixel-art-landscapes-flower-field-background_52683-125359.jpg');
   background-size: cover;
-  height: 500px;
+  /* height: 500px; */
   width: 500px;
   display: grid;
-  grid-template-columns: repeat(8, 1fr); /* 5 columnas */
-  align-items: end; /* Alinea los elementos al final del contenedor */
-  justify-items: center; /* Centra los elementos horizontalmente */
-  gap: 10px; /* Espacio entre los elementos */
+  grid-template-columns: repeat(8, 1fr); 
+  align-items: end; 
+  justify-items: center; 
+  gap: 10px; 
 }
 
 .farm {
-  width: 50px; /* Ajusta el tamaño del componente farm */
+  width: 50px;
   height: 50px;
 }

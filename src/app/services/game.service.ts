@@ -17,10 +17,10 @@ export class GameService {
 
   upgrades: Upgrade[] = [
     { id: 1, name: 'Plant Marihuana', cost: 10, costIncrease: 0, pointsIncrease: 1, count: 0, requiredPoints: 0, icon: FarmComponent },
-    { id: 2, name: 'Sling Cocaine', cost: 50, costIncrease: 0, pointsIncrease: 5, count: 0, requiredPoints: 100 },
-    { id: 3, name: 'Sell Heroin', cost: 100, costIncrease: 0, pointsIncrease: 10, count: 0, requiredPoints: 200 },
+    { id: 2, name: 'Sling Cocaine', cost: 50, costIncrease: 0, pointsIncrease: 5, count: 0, requiredPoints: 100, icon: FarmComponent },
+    { id: 3, name: 'Sell Heroin', cost: 100, costIncrease: 0, pointsIncrease: 10, count: 0, requiredPoints: 200, icon: FarmComponent},
     { id: 4, name: 'Produce Meth', cost: 500, costIncrease: 0, pointsIncrease: 50, count: 0, requiredPoints: 300 },
-    { id: 5, name: 'Traffic Humans', cost: 1000, costIncrease: 0, pointsIncrease: 100, count: 0, requiredPoints: 400 },
+    { id: 5, name: 'Traffic Humans', cost: 1000, costIncrease: 0, pointsIncrease: 100, count: 0, requiredPoints: 400, icon: FarmComponent },
   ];
   
   clickUpgrades: Upgrade[] = [
