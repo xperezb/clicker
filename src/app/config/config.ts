@@ -59,7 +59,7 @@ export const UPGRADES: Upgrade[] = [
   
   export const CLICK_UPGRADES: Upgrade[] = [
 
-    // { id: 0, name: 'Magic button', cost: 0, costIncrease: 0, pointsIncrease: 1000000, count: 0, requiredPoints: 0, icon: FarmComponent },
+    { id: 0, name: 'Magic button', cost: 0, costIncrease: 0, pointsIncrease: 1000000, count: 0, requiredPoints: 0, icon: FarmComponent },
 
     { 
         id: 1, 
