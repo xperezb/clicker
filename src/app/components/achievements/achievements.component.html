@@ -1,3 +1,5 @@
-<div *ngFor="let achievement of achievements$ | async">
+@for (achievement of achievements$ | async; track achievement) {
+  <div>
     {{ achievement.name }} x {{ achievement.count }}
-</div>
+  </div>
+}

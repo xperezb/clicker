@@ -1,5 +1,5 @@
 <div class="container">
-  <ng-container *ngFor="let farm of [].constructor(farmCount)">
+  @for (farm of [].constructor(farmCount); track farm) {
     <app-farm class="farm"></app-farm>
-  </ng-container>
+  }
 </div>
