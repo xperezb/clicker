@@ -8,8 +8,12 @@
           class="upgrade__button"
           (click)="buyUpgrade(upgrade.id)" 
           [disabled]="upgrade.cost > ((points$ | async) ?? 0)">
-            <div *ngComponentOutlet="upgrade.icon ?? null"></div>
+          <div class="upgrade__button__icon"> 
+            <div *ngComponentOutlet="upgrade.icon ?? null" ></div>
+          </div>
+          <div class="upgrade__button__text"> 
             {{ upgrade.name }} {{ upgrade.cost }}$ (+{{ upgrade.pointsIncrease }}$/week)
+          </div>
         </button>
       </div>
     }

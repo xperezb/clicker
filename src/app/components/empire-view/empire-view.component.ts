@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FarmComponent } from './components/farm.component';
+import { FarmComponent } from './components/farm/farm.component';
 import { GameService } from '../../services/game.service';
 import { Upgrade } from '../../interfaces/upgrade';
 import { CommonModule } from '@angular/common';
