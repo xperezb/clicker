@@ -4,11 +4,14 @@
   background-size: cover;
   height: 500px;
   width: 500px;
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 5 columnas */
+  align-items: end; /* Alinea los elementos al final del contenedor */
+  justify-items: center; /* Centra los elementos horizontalmente */
+  gap: 10px; /* Espacio entre los elementos */
 }
 
 .farm {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 48px;
+  width: 50px; /* Ajusta el tamaño del componente farm */
+  height: 50px;
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  @for (farm of [].constructor(farmCount); track farm) {
+  @for (farm of [].constructor(farmCount).slice(0, 8); track farm) {
     <app-farm class="farm"></app-farm>
   }
 </div>
