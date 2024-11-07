@@ -19,7 +19,7 @@ export class GameService {
     { id: 2, name: 'Sling Cocaine', cost: 50, increase: 5, count: 0, requiredPoints: 100 },
     { id: 3, name: 'Sell Heroin', cost: 100, increase: 10, count: 0, requiredPoints: 200 },
     { id: 4, name: 'Produce Meth', cost: 500, increase: 50, count: 0, requiredPoints: 300 },
-    { id: 5, name: 'Traffic Humans', cost: 1000, increase: 100, count: 0, requiredPoints: 400 },
+    { id: 5, name: 'Prostitute', cost: 1000, increase: 100, count: 0, requiredPoints: 400 },
   ];
 
   clickUpgrades: Upgrade[] = [
