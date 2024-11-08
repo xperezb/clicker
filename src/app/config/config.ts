@@ -1,24 +1,47 @@
+import { BikeComponent } from "../components/empire-view/components/bike/bike.component";
+import { CigsComponent } from "../components/empire-view/components/cigs/cigs.component";
 import { CocaineComponent } from "../components/empire-view/components/cocaine/cocaine.component";
 import { FarmComponent } from "../components/empire-view/components/farm/farm.component";
+import { GhbComponent } from "../components/empire-view/components/ghb/ghb.component";
 import { HeroinComponent } from "../components/empire-view/components/heroin/heroin.component";
 import { HtrafficComponent } from "../components/empire-view/components/htraffic/htraffic.component";
 import { MethComponent } from "../components/empire-view/components/meth/meth.component";
+import { OxycodoneComponent } from "../components/empire-view/components/oxycodone/oxycodone.component";
+import { PrerolledComponent } from "../components/empire-view/components/prerolled/prerolled.component";
 import { Upgrade } from "../interfaces/upgrade";
 
 export const UPGRADES: Upgrade[] = [
     {   
-        id: 1, 
-        name: 'Plant Marihuana', 
+        id: 6, 
+        name: 'Cigarrete', 
         cost: 10, costIncrease: 0, 
         pointsIncrease: 1, 
+        count: 0, 
+        requiredPoints: 0, 
+        icon: CigsComponent 
+    },
+    {   
+        id: 7, 
+        name: 'Prerolled Joint', 
+        cost: 100, costIncrease: 0, 
+        pointsIncrease: 1, 
+        count: 0, 
+        requiredPoints: 0, 
+        icon: PrerolledComponent 
+    },
+    {   
+        id: 1, 
+        name: 'Marihuana Buds', 
+        cost: 500, costIncrease: 0, 
+        pointsIncrease: 4, 
         count: 0, 
         requiredPoints: 0, 
         icon: FarmComponent 
     },
     { 
         id: 2, 
-        name: 'Sling Cocaine', 
-        cost: 50, 
+        name: 'Cocaine', 
+        cost: 2000, 
         costIncrease: 0, 
         pointsIncrease: 5, 
         count: 0, 
@@ -26,9 +49,28 @@ export const UPGRADES: Upgrade[] = [
         icon: CocaineComponent 
     },
     { 
+        id: 2, 
+        name: 'GHB', 
+        cost: 2000, 
+        costIncrease: 0, 
+        pointsIncrease: 5, 
+        count: 0, 
+        requiredPoints: 100, 
+        icon: GhbComponent
+    },
+    {   
+        id: 7, 
+        name: 'Oxycodone', 
+        cost: 100, costIncrease: 0, 
+        pointsIncrease: 1, 
+        count: 0, 
+        requiredPoints: 0, 
+        icon: OxycodoneComponent 
+    },
+    { 
         id: 3, 
-        name: 'Sell Heroin', 
-        cost: 100, 
+        name: 'Heroin', 
+        cost: 10000, 
         costIncrease: 0, 
         pointsIncrease: 10, 
         count: 0, 
@@ -38,7 +80,7 @@ export const UPGRADES: Upgrade[] = [
     { 
         id: 4, 
         name: 'Produce Meth', 
-        cost: 500, 
+        cost: 5000, 
         costIncrease: 0, 
         pointsIncrease: 50, 
         count: 0, 
@@ -48,7 +90,7 @@ export const UPGRADES: Upgrade[] = [
     { 
         id: 5, 
         name: 'Traffic Humans', 
-        cost: 1000, 
+        cost: 100000, 
         costIncrease: 0, 
         pointsIncrease: 100, 
         count: 0, 
@@ -68,7 +110,8 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 0, 
         pointsIncrease: 1, 
         count: 0, 
-        requiredPoints: 0 
+        requiredPoints: 0,
+        icon: BikeComponent
     },
     {
         id: 2, 

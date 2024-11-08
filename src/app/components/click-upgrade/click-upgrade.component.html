@@ -4,6 +4,9 @@
     @if (upgrade.requiredPoints <= ((totalPoints$ | async) ?? 0)) {
       <div>
         <button (click)="buyClickUpgrade(upgrade.id)" [disabled]="upgrade.cost > ((points$ | async) ?? 0)">
+          <div class="upgrade__button__icon"> 
+            <div *ngComponentOutlet="upgrade.icon ?? null" ></div>
+          </div>
           {{ upgrade.name }} {{ upgrade.cost }}$ (+{{ upgrade.pointsIncrease }}$/deal)
           <!-- <span *ngIf="upgrade.count > 0">(+{{ ((pointsPerClick$ | async) ?? 0) }}$/deal)</span> -->
         </button> {{ upgrade.count }}
