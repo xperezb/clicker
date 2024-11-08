@@ -1,5 +1,6 @@
 .container {
     height: 200px;
+    width: 400px;
     overflow-y: auto;
     border: 4px solid black;
     border-radius: 10px;
@@ -8,8 +9,10 @@
 }
   
 .message {
-    margin-bottom: 5px;
     font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 5px;
 }
 
 .container::-webkit-scrollbar {

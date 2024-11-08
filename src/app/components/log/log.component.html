@@ -1,9 +1,9 @@
 <h2>Log</h2>
 
 <div class="container" #logContainer>
-    @for (log of logs$ | async; track log) {
+    @for (log of logs$ | async; track log.id) {
       <div class="message">
-        {{ log }}
+        {{ log.message }}
       </div>
     }
   </div>
