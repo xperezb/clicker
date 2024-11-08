@@ -1,19 +1,26 @@
 <div class="game">
 
-  <section class="right">
-    <app-click-upgrades></app-click-upgrades>
+  <section class="top">
+    <h1 class="title">-Drug Lord Clicker-</h1>
   </section>
 
-  <section class="middle">
-    <h1 class="title">Drug Lord Clicker</h1>
-    <app-score></app-score>
-    <app-clicker></app-clicker>
-    <app-empire-view></app-empire-view>
-    <app-achievements></app-achievements>
-  </section>
+  <div class="bottom">
+    <section class="left">
+      <app-click-upgrades></app-click-upgrades>
+    </section>
+  
+    <section class="middle" style="display: flex; flex-direction: column; align-items: center;">
+      <app-score></app-score>
+      <app-clicker></app-clicker>
+      <app-empire-view></app-empire-view>
+      <app-achievements></app-achievements>
+    </section>
+  
+    <section class="right">
+      <app-upgrades style="display: flex; flex-direction: column; align-items: center;"></app-upgrades>
+    </section>
+  </div>
 
-  <section class="left">
-    <app-upgrades></app-upgrades>
-  </section>
+  
 
 </div>

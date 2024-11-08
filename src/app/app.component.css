@@ -1,10 +1,15 @@
 .game {
   text-align: center;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
 }
 
 .title {
   font-size: 56px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
 }
