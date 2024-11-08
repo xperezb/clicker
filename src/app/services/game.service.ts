@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Upgrade } from '../interfaces/upgrade';
-import { UPGRADES, CLICK_UPGRADES } from '../config/config';
+import { UPGRADES, CLICK_UPGRADES, DEFENSES } from '../config/config';
+import { Defense } from '../interfaces/defense';
 
 @Injectable({
   providedIn: 'root',
@@ -11,14 +12,17 @@ export class GameService {
   public totalPoints = 0;
   public pointsPerClick = 1;
   public pointsPerSecond = 0;
+  private defensePoints = 0;
 
   private clickUpgradeCost = 10;
   private clickUpgradeCount = 0;
 
   upgrades: Upgrade[] = UPGRADES;
+  defenses: Defense[] = DEFENSES;
   clickUpgrades: Upgrade[] = CLICK_UPGRADES;
 
   points$ = new BehaviorSubject<number>(this.points);
+  defensePoints$ = new BehaviorSubject<number>(this.defensePoints);
   totalPoints$ = new BehaviorSubject<number>(this.totalPoints); // Nueva propiedad
   pointsPerClick$ = new BehaviorSubject<number>(this.pointsPerClick);
   pointsPerSecond$ = new BehaviorSubject<number>(this.pointsPerSecond);
@@ -26,6 +30,7 @@ export class GameService {
   clickUpgradeCost$ = new BehaviorSubject<number>(this.clickUpgradeCost);
   upgrades$ = new BehaviorSubject<Upgrade[]>(this.upgrades);
   clickUpgrades$ = new BehaviorSubject<Upgrade[]>(this.clickUpgrades);
+  defenses$ = new BehaviorSubject<Defense[]>(this.defenses);
   achievements$ = new BehaviorSubject<Upgrade[]>([]);
 
   constructor() {
@@ -72,7 +77,7 @@ export class GameService {
       this.points -= upgrade.cost;
       this.pointsPerSecond += upgrade.pointsIncrease;
       upgrade.count += 1;
-      upgrade.cost = Math.floor(upgrade.cost + 5);
+      upgrade.cost = Math.floor(upgrade.cost * upgrade.costIncrease);
 
       this.points$.next(this.points);
       this.pointsPerSecond$.next(this.pointsPerSecond);
@@ -88,13 +93,27 @@ export class GameService {
       this.points -= upgrade.cost;
       this.pointsPerClick += upgrade.pointsIncrease;
       upgrade.count += 1;
-      upgrade.cost = Math.floor(upgrade.cost + 5);
+      upgrade.cost = Math.floor(upgrade.cost * upgrade.costIncrease);
 
       this.points$.next(this.points);
       this.pointsPerClick$.next(this.pointsPerClick);
       this.clickUpgrades$.next(this.clickUpgrades);
 
       this.addAchievement(upgrade);
+    }
+  }
+  buyDefense(defenseId: number) {
+    const defense = this.defenses.find(u => u.id === defenseId);
+    if (defense && this.points >= defense.cost) {
+      this.points -= defense.cost;
+      this.defensePoints += defense.pointsIncrease;
+      defense.count += 1;
+      defense.cost = Math.floor(defense.cost * defense.costIncrease);
+
+      this.points$.next(this.points);
+      this.defensePoints$.next(this.defensePoints)
+      this.addAchievement(defense);
+      
     }
   }
 

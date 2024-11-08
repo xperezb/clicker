@@ -1,6 +1,12 @@
-button {
+.upgrade__button {
+  display: flex;
+  align-items: center;
   font-size: 18px;
   padding: 8px 16px;
   margin-top: 20px;
   cursor: pointer;
+}
+
+.upgrade__button__icon {
+  margin-right: 16px;
 }

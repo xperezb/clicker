@@ -1,0 +1,20 @@
+<h2>Invest in Defense</h2>
+@for (defense of defenses$ | async; track defense) {
+    @if (defense.requiredPoints <= ((totalPoints$ | async) ?? 0)) {
+      <div>
+        {{ defense.count }}
+        <button
+          class="defense__button"
+          (click)="buyDefense(defense.id)" 
+          [disabled]="defense.cost > ((points$ | async) ?? 0)">
+          <div class="defense__button__icon"> 
+            <div *ngComponentOutlet="defense.icon ?? null" ></div>
+          </div>
+          <div class="defense__button__text"> 
+            {{ defense.name }} {{ defense.cost }}$ (+{{ defense.pointsIncrease }} Defense Points)
+          </div>
+        </button>
+      </div>
+    }
+}
+
