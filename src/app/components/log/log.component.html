@@ -1,1 +1,9 @@
-<p>log works!</p>
+<h2>Log</h2>
+
+<div class="container" #logContainer>
+    @for (log of logs$ | async; track log) {
+      <div class="message">
+        {{ log }}
+      </div>
+    }
+  </div>

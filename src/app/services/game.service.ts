@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Upgrade } from '../interfaces/upgrade';
 import { UPGRADES, CLICK_UPGRADES, DEFENSES } from '../config/config';
 import { Defense } from '../interfaces/defense';
+import { LogService } from './log.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,7 @@ export class GameService {
 
   points$ = new BehaviorSubject<number>(this.points);
   defensePoints$ = new BehaviorSubject<number>(this.defensePoints);
-  totalPoints$ = new BehaviorSubject<number>(this.totalPoints); // Nueva propiedad
+  totalPoints$ = new BehaviorSubject<number>(this.totalPoints);
   pointsPerClick$ = new BehaviorSubject<number>(this.pointsPerClick);
   pointsPerSecond$ = new BehaviorSubject<number>(this.pointsPerSecond);
   clickUpgradeCount$ = new BehaviorSubject<number>(this.clickUpgradeCount);
@@ -33,7 +34,7 @@ export class GameService {
   defenses$ = new BehaviorSubject<Defense[]>(this.defenses);
   achievements$ = new BehaviorSubject<Upgrade[]>([]);
 
-  constructor() {
+  constructor(private _logService: LogService) {
     setInterval(() => {
       this.incrementPoints(this.pointsPerSecond);
     }, 1000);
@@ -83,6 +84,7 @@ export class GameService {
       this.pointsPerSecond$.next(this.pointsPerSecond);
       this.upgrades$.next(this.upgrades);
 
+      this._logService.addLog(`You bought a ${upgrade.name}!`);
       this.addAchievement(upgrade);
     }
   }
@@ -99,6 +101,7 @@ export class GameService {
       this.pointsPerClick$.next(this.pointsPerClick);
       this.clickUpgrades$.next(this.clickUpgrades);
 
+      this._logService.addLog(`You bought a ${upgrade.name}!`);
       this.addAchievement(upgrade);
     }
   }
@@ -112,8 +115,9 @@ export class GameService {
 
       this.points$.next(this.points);
       this.defensePoints$.next(this.defensePoints)
-      this.addAchievement(defense);
       
+      this._logService.addLog(`You bought a ${defense.name}!`);
+      this.addAchievement(defense);
     }
   }
 
@@ -121,6 +125,7 @@ export class GameService {
     if (upgrade.count === 1) {  
       const currentAchievements = this.achievements$.getValue();
       this.achievements$.next([...currentAchievements, upgrade]);
+      this._logService.addLog(`Achievement unlocked: My first ${upgrade.name}!`);
     }
   }
 
