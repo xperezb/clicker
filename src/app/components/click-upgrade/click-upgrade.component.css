@@ -18,6 +18,7 @@
 .upgrade__button {
   display: flex;
   align-items: center;
+  width: 100%;
   font-size: 18px;
   padding: 8px 16px;
   cursor: pointer;
