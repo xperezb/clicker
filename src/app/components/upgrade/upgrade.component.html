@@ -1,7 +1,9 @@
 <h2>Invest in Drug Empire</h2>
-@for (upgrade of upgrades$ | async; track upgrade) {
+
+<div class="container">
+  @for (upgrade of upgrades$ | async; track upgrade) {
     @if (upgrade.requiredPoints <= ((totalPoints$ | async) ?? 0)) {
-      <div class="container">
+      <div class="upgrade__container">
         <div class="upgrade__count">
           {{ upgrade.count }}
         </div>
@@ -18,4 +20,5 @@
         </button>
       </div>
     }
-}
+  }
+</div>

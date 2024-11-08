@@ -1,23 +1,26 @@
 <h2>Hire Resources</h2>
-@for (upgrade of clickUpgrades$ | async; track upgrade) {
-  <div>
-    @if (upgrade.requiredPoints <= ((totalPoints$ | async) ?? 0)) {
-      <div class="container">
-        <button
-          class="upgrade__button"
-          (click)="buyClickUpgrade(upgrade.id)" 
-          [disabled]="upgrade.cost > ((points$ | async) ?? 0)" >
-          <div class="upgrade__button__icon"> 
-            <div *ngComponentOutlet="upgrade.icon ?? null" ></div>
+
+<div class="container">
+  @for (upgrade of clickUpgrades$ | async; track upgrade) {
+    <div>
+      @if (upgrade.requiredPoints <= ((totalPoints$ | async) ?? 0)) {
+        <div class="upgrade__container">
+          <button
+            class="upgrade__button"
+            (click)="buyClickUpgrade(upgrade.id)" 
+            [disabled]="upgrade.cost > ((points$ | async) ?? 0)" >
+            <div class="upgrade__button__icon"> 
+              <div *ngComponentOutlet="upgrade.icon ?? null" ></div>
+            </div>
+            <div class="upgrade__button__text"> 
+              {{ upgrade.name }} {{ upgrade.cost }}$ (+{{ upgrade.pointsIncrease }}$/deal)
+            </div>
+          </button> 
+          <div class="upgrade__count">
+            {{ upgrade.count }}
           </div>
-          <div class="upgrade__button__text"> 
-            {{ upgrade.name }} {{ upgrade.cost }}$ (+{{ upgrade.pointsIncrease }}$/deal)
-          </div>
-        </button> 
-        <div class="upgrade__count">
-          {{ upgrade.count }}
         </div>
-      </div>
-    }
-  </div>
-}
+      }
+    </div>
+  }
+</div>
