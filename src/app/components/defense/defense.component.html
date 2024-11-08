@@ -1,8 +1,7 @@
 <h2>Invest in Defense</h2>
 @for (defense of defenses$ | async; track defense) {
     @if (defense.requiredPoints <= ((totalPoints$ | async) ?? 0)) {
-      <div>
-        {{ defense.count }}
+      <div class="container">
         <button
           class="defense__button"
           (click)="buyDefense(defense.id)" 
@@ -14,6 +13,9 @@
             {{ defense.name }} {{ defense.cost }}$ (+{{ defense.pointsIncrease }} Defense Points)
           </div>
         </button>
+        <div class="defense__count">
+          {{ defense.count }}
+        </div>
       </div>
     }
 }
