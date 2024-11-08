@@ -1,3 +1,4 @@
+import { AhmedComponent } from "../components/empire-view/components/ahmed/ahmed.component";
 import { BikeComponent } from "../components/empire-view/components/bike/bike.component";
 import { CigsComponent } from "../components/empire-view/components/cigs/cigs.component";
 import { CocaineComponent } from "../components/empire-view/components/cocaine/cocaine.component";
@@ -6,15 +7,19 @@ import { GhbComponent } from "../components/empire-view/components/ghb/ghb.compo
 import { HeroinComponent } from "../components/empire-view/components/heroin/heroin.component";
 import { HtrafficComponent } from "../components/empire-view/components/htraffic/htraffic.component";
 import { MethComponent } from "../components/empire-view/components/meth/meth.component";
+import { MotorbikeComponent } from "../components/empire-view/components/motorbike/motorbike.component";
+import { Ms13Component } from "../components/empire-view/components/ms13/ms13.component";
 import { OxycodoneComponent } from "../components/empire-view/components/oxycodone/oxycodone.component";
 import { PrerolledComponent } from "../components/empire-view/components/prerolled/prerolled.component";
+import { St18Component } from "../components/empire-view/components/st18/st18.component";
+import { Defense } from "../interfaces/defense";
 import { Upgrade } from "../interfaces/upgrade";
 
 export const UPGRADES: Upgrade[] = [
     {   
         id: 6, 
         name: 'Cigarrete', 
-        cost: 10, costIncrease: 0, 
+        cost: 10, costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
         requiredPoints: 0, 
@@ -23,7 +28,7 @@ export const UPGRADES: Upgrade[] = [
     {   
         id: 7, 
         name: 'Prerolled Joint', 
-        cost: 100, costIncrease: 0, 
+        cost: 100, costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
         requiredPoints: 0, 
@@ -32,7 +37,7 @@ export const UPGRADES: Upgrade[] = [
     {   
         id: 1, 
         name: 'Marihuana Buds', 
-        cost: 500, costIncrease: 0, 
+        cost: 500, costIncrease: 1.16, 
         pointsIncrease: 4, 
         count: 0, 
         requiredPoints: 0, 
@@ -42,7 +47,7 @@ export const UPGRADES: Upgrade[] = [
         id: 2, 
         name: 'Cocaine', 
         cost: 2000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 5, 
         count: 0, 
         requiredPoints: 100, 
@@ -52,7 +57,7 @@ export const UPGRADES: Upgrade[] = [
         id: 2, 
         name: 'GHB', 
         cost: 2000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 5, 
         count: 0, 
         requiredPoints: 100, 
@@ -61,7 +66,7 @@ export const UPGRADES: Upgrade[] = [
     {   
         id: 7, 
         name: 'Oxycodone', 
-        cost: 100, costIncrease: 0, 
+        cost: 5000, costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
         requiredPoints: 0, 
@@ -71,7 +76,7 @@ export const UPGRADES: Upgrade[] = [
         id: 3, 
         name: 'Heroin', 
         cost: 10000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 10, 
         count: 0, 
         requiredPoints: 200, 
@@ -80,8 +85,8 @@ export const UPGRADES: Upgrade[] = [
     { 
         id: 4, 
         name: 'Produce Meth', 
-        cost: 5000, 
-        costIncrease: 0, 
+        cost: 30000, 
+        costIncrease: 1.16, 
         pointsIncrease: 50, 
         count: 0, 
         requiredPoints: 300, 
@@ -89,9 +94,9 @@ export const UPGRADES: Upgrade[] = [
     },
     { 
         id: 5, 
-        name: 'Traffic Humans', 
-        cost: 100000, 
-        costIncrease: 0, 
+        name: 'Human Being', 
+        cost: 1000000, 
+        costIncrease: 1.16, 
         pointsIncrease: 100, 
         count: 0, 
         requiredPoints: 400, 
@@ -107,7 +112,7 @@ export const UPGRADES: Upgrade[] = [
         id: 1, 
         name: 'Bike', 
         cost: 10, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
         requiredPoints: 0,
@@ -117,43 +122,27 @@ export const UPGRADES: Upgrade[] = [
         id: 2, 
         name: 'MotorBike', 
         cost: 100, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 5, 
         count: 0, 
-        requiredPoints: 100 
+        requiredPoints: 100,
+        icon: MotorbikeComponent
     },
     {
         id: 3, 
         name: 'Ahmed', 
         cost: 1000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 10, 
         count: 0, 
-        requiredPoints: 200 
-    },
-    {
-        id: 4, 
-        name: 'M13 Gang Member', 
-        cost: 10000, 
-        costIncrease: 0, 
-        pointsIncrease: 50, 
-        count: 0, 
-        requiredPoints: 300
-    },
-    { 
-        id: 5, 
-        name: '18ST Gang Member', 
-        cost: 10000, 
-        costIncrease: 0, 
-        pointsIncrease: 50, 
-        count: 0, 
-        requiredPoints: 300
+        requiredPoints: 200,
+        icon: AhmedComponent
     },
     { 
         id: 6, 
         name: 'Pick-up Truck', 
         cost: 50000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 100, 
         count: 0, 
         requiredPoints: 400 
@@ -162,7 +151,7 @@ export const UPGRADES: Upgrade[] = [
         id: 7, 
         name: 'Local Police Officer', 
         cost: 100000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 1500, 
         count: 0, 
         requiredPoints: 1000
@@ -171,7 +160,7 @@ export const UPGRADES: Upgrade[] = [
         id: 8, 
         name: 'FBI Agent', 
         cost: 1000000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 2000, 
         count: 0, 
         requiredPoints: 2000
@@ -180,9 +169,33 @@ export const UPGRADES: Upgrade[] = [
         id: 9, 
         name: 'CIA Agent', 
         cost: 5000000, 
-        costIncrease: 0, 
+        costIncrease: 1.16, 
         pointsIncrease: 2000, 
         count: 0, 
         requiredPoints: 2000 
     }
+    
   ];
+  export const DEFENSES: Defense[] = [
+
+    {
+        id: 4, 
+        name: 'M13 Gang Member', 
+        cost: 10000, 
+        costIncrease: 1.16, 
+        pointsIncrease: 50, 
+        count: 0, 
+        requiredPoints: 0,
+        icon: Ms13Component
+    },
+    { 
+        id: 5, 
+        name: '18ST Gang Member', 
+        cost: 10000, 
+        costIncrease: 1.16, 
+        pointsIncrease: 50, 
+        count: 0, 
+        requiredPoints: 0,
+        icon: St18Component
+    }
+  ]

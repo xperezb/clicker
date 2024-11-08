@@ -7,6 +7,7 @@ import { GameService } from './services/game.service';
 import { ClickUpgradesComponent } from './components/click-upgrade/click-upgrade.component';
 import { EmpireViewComponent } from './components/empire-view/empire-view.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
+import { DefenseComponent } from './components/defense/defense.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ import { AchievementsComponent } from './components/achievements/achievements.co
     UpgradesComponent,
     ClickUpgradesComponent,
     EmpireViewComponent,
-    AchievementsComponent
+    AchievementsComponent,
+    DefenseComponent
   ],
   providers: [GameService],
   templateUrl: './app.component.html',
