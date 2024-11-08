@@ -19,8 +19,9 @@ export const UPGRADES: Upgrade[] = [
     {   
         id: 1, 
         name: 'Cigarrete', 
-        cost: 10, costIncrease: 1.16, 
-        pointsIncrease: 1, 
+        cost: 10, 
+        costIncrease: 1.16, 
+        pointsIncrease: 0.5, 
         count: 0, 
         requiredPoints: 0, 
         icon: CigsComponent 
@@ -28,8 +29,9 @@ export const UPGRADES: Upgrade[] = [
     {   
         id: 2, 
         name: 'Prerolled Joint', 
-        cost: 100, costIncrease: 1.16, 
-        pointsIncrease: 1, 
+        cost: 50, 
+        costIncrease: 1.16, 
+        pointsIncrease: 2.5, 
         count: 0, 
         requiredPoints: 0, 
         icon: PrerolledComponent 
@@ -37,8 +39,9 @@ export const UPGRADES: Upgrade[] = [
     {   
         id: 3, 
         name: 'Marihuana Buds', 
-        cost: 500, costIncrease: 1.16, 
-        pointsIncrease: 4, 
+        cost: 500,
+        costIncrease: 1.16, 
+        pointsIncrease: 25, 
         count: 0, 
         requiredPoints: 0, 
         icon: FarmComponent 
@@ -48,7 +51,7 @@ export const UPGRADES: Upgrade[] = [
         name: 'Cocaine', 
         cost: 2000, 
         costIncrease: 1.16, 
-        pointsIncrease: 5, 
+        pointsIncrease: 100, 
         count: 0, 
         requiredPoints: 100, 
         icon: CocaineComponent 
@@ -56,9 +59,9 @@ export const UPGRADES: Upgrade[] = [
     { 
         id: 5, 
         name: 'GHB', 
-        cost: 2000, 
+        cost: 3500, 
         costIncrease: 1.16, 
-        pointsIncrease: 5, 
+        pointsIncrease: 175, 
         count: 0, 
         requiredPoints: 100, 
         icon: GhbComponent
@@ -66,8 +69,9 @@ export const UPGRADES: Upgrade[] = [
     {   
         id: 6, 
         name: 'Oxycodone', 
-        cost: 5000, costIncrease: 1.16, 
-        pointsIncrease: 1, 
+        cost: 5000,
+        costIncrease: 1.16, 
+        pointsIncrease: 250, 
         count: 0, 
         requiredPoints: 0, 
         icon: OxycodoneComponent 
@@ -77,7 +81,7 @@ export const UPGRADES: Upgrade[] = [
         name: 'Heroin', 
         cost: 10000, 
         costIncrease: 1.16, 
-        pointsIncrease: 10, 
+        pointsIncrease: 500, 
         count: 0, 
         requiredPoints: 200, 
         icon: HeroinComponent
@@ -87,7 +91,7 @@ export const UPGRADES: Upgrade[] = [
         name: 'Produce Meth', 
         cost: 30000, 
         costIncrease: 1.16, 
-        pointsIncrease: 50, 
+        pointsIncrease: 1500, 
         count: 0, 
         requiredPoints: 300, 
         icon: MethComponent
@@ -97,7 +101,7 @@ export const UPGRADES: Upgrade[] = [
         name: 'Human Being', 
         cost: 1000000, 
         costIncrease: 1.16, 
-        pointsIncrease: 100, 
+        pointsIncrease: 50000, 
         count: 0, 
         requiredPoints: 400, 
         icon: HtrafficComponent 
