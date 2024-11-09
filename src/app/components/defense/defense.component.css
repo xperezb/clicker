@@ -5,7 +5,7 @@
   border: 4px solid black;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 0 0 0 4px #ccc, 0 0 0 8px black; 
+  box-shadow: 0 0 0 4px #ccc, 0 0 0 8px black;
 }
 
 .defense__container {
@@ -23,13 +23,13 @@
   padding: 8px 16px;
   cursor: pointer;
 }
-  
+
 .defense__button__icon {
   margin-right: 16px;
 }
 
 .defense__count {
-  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .container::-webkit-scrollbar {
@@ -42,7 +42,7 @@
 }
 
 .container::-webkit-scrollbar-thumb {
-  background: grey; 
+  background: grey;
   border-radius: 10px;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
 }
