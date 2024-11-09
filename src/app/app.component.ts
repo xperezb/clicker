@@ -10,6 +10,7 @@ import { UpgradesComponent } from './components/upgrades/upgrades.component';
 import { Observable } from 'rxjs';
 import { Defense } from './interfaces/defense';
 import { Upgrade } from './interfaces/upgrade';
+import { DevToolsComponent } from './components/dev-tools/dev-tools.component';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { Upgrade } from './interfaces/upgrade';
     EmpireViewComponent,
     AchievementsComponent,
     LogComponent,
-    UpgradesComponent
+    UpgradesComponent,
+    DevToolsComponent
   ],
   providers: [GameService],
   templateUrl: './app.component.html',
@@ -34,6 +36,7 @@ export class AppComponent {
   defenses$?: Observable<Defense[]>;
   points$?: Observable<number>;
   totalPoints$?: Observable<number>;
+  showDevTools = false;
 
   constructor(private gameService: GameService) {
     this.upgrades$ = this.gameService.upgrades$;
@@ -55,6 +58,10 @@ export class AppComponent {
 
   public buyDefense = (defenseId: number) => {
     this.gameService.buyDefense(defenseId);
+  }
+
+  public toggleDevTools() {
+    this.showDevTools = !this.showDevTools;
   }
 
 }

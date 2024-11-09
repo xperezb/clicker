@@ -9,14 +9,11 @@ import { LogService } from './log.service';
   providedIn: 'root',
 })
 export class GameService {
-  private points = 0;
+  public points = 0;
   public totalPoints = 0;
   public pointsPerClick = 1;
   public pointsPerSecond = 0;
-  private defensePoints = 0;
-
-  private clickUpgradeCost = 10;
-  private clickUpgradeCount = 0;
+  public defensePoints = 0;
 
   upgrades: Upgrade[] = UPGRADES;
   defenses: Defense[] = DEFENSES;
@@ -27,8 +24,6 @@ export class GameService {
   totalPoints$ = new BehaviorSubject<number>(this.totalPoints);
   pointsPerClick$ = new BehaviorSubject<number>(this.pointsPerClick);
   pointsPerSecond$ = new BehaviorSubject<number>(this.pointsPerSecond);
-  clickUpgradeCount$ = new BehaviorSubject<number>(this.clickUpgradeCount);
-  clickUpgradeCost$ = new BehaviorSubject<number>(this.clickUpgradeCost);
   upgrades$ = new BehaviorSubject<Upgrade[]>(this.upgrades);
   clickUpgrades$ = new BehaviorSubject<Upgrade[]>(this.clickUpgrades);
   defenses$ = new BehaviorSubject<Defense[]>(this.defenses);

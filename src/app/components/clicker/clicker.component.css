@@ -1,12 +1,5 @@
-/* button {
-  font-size: 24px;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-} */
-
+/* Estilos para el botón */
 button {
-  /* Variables */
   --button_radius: 0.75em;
   --button_color: #e8e8e8;
   --button_outline_color: #000000;
@@ -31,11 +24,32 @@ button {
 }
 
 button:hover .button_top {
-  /* Pull the button upwards when hovered */
   transform: translateY(-0.33em);
 }
 
 button:active .button_top {
-  /* Push the button downwards when pressed */
   transform: translateY(0);
+}
+
+/* Estilos para los billetes */
+.bill {
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  background-color: green;
+  border-radius: 3px;
+  opacity: 0.9;
+  animation: fall 5s linear forwards;
+}
+
+/* Animación de caída */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(15deg);
+    opacity: 0;
+  }
 }

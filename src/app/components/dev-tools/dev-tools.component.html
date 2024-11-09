@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>DevTools</h2>
+    <div class="dev-tools">
+      <label>
+        Points:
+        <input type="number" [(ngModel)]="gameService.points" (change)="updatePoints(gameService.points)">
+      </label>
+      <label>
+        Total Points:
+        <input type="number" [(ngModel)]="gameService.totalPoints" (change)="updateTotalPoints(gameService.totalPoints)">
+      </label>
+      <label>
+        Points Per Click:
+        <input type="number" [(ngModel)]="gameService.pointsPerClick" (change)="updatePointsPerClick(gameService.pointsPerClick)">
+      </label>
+      <label>
+        Points Per Second:
+        <input type="number" [(ngModel)]="gameService.pointsPerSecond" (change)="updatePointsPerSecond(gameService.pointsPerSecond)">
+      </label>
+      <label>
+        Defense Points:
+        <input type="number" [(ngModel)]="gameService.defensePoints" (change)="updateDefensePoints(gameService.defensePoints)">
+      </label>
+    </div>
+</div>

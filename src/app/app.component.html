@@ -1,5 +1,5 @@
 <div class="game">
-
+  <button (click)="toggleDevTools()" style="width: 70px; background-color: grey; border: none;">x</button>
   <section class="top">
     <h1 class="title">{{ title }}</h1>
   </section>
@@ -51,4 +51,9 @@
     </section>
   </div>
 
-</div>
+  @if(showDevTools) {
+    <section class="dev-tools">
+      <app-dev-tools></app-dev-tools>
+    </section>
+  }
+
