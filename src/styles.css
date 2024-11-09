@@ -4,4 +4,6 @@
 body {
   font-family: 'Press Start 2P', cursive;
   background-color: grey;
+  display: flex;
+  justify-content: center;
 }
