@@ -73,13 +73,13 @@ export class GameService {
       this.points -= upgrade.cost;
       this.pointsPerSecond += upgrade.pointsIncrease;
       upgrade.count += 1;
+      this._logService.addLog(`You bought a ${upgrade.name} for $${upgrade.cost}.`);
       upgrade.cost = Math.floor(upgrade.cost * upgrade.costIncrease);
 
       this.points$.next(this.points);
       this.pointsPerSecond$.next(this.pointsPerSecond);
       this.upgrades$.next(this.upgrades);
 
-      this._logService.addLog(`You bought a ${upgrade.name}!`);
       this.addAchievement(upgrade);
     }
   }
@@ -90,13 +90,13 @@ export class GameService {
       this.points -= upgrade.cost;
       this.pointsPerClick += upgrade.pointsIncrease;
       upgrade.count += 1;
+      this._logService.addLog(`You bought a ${upgrade.name} for $${upgrade.cost}.`);
       upgrade.cost = Math.floor(upgrade.cost * upgrade.costIncrease);
 
       this.points$.next(this.points);
       this.pointsPerClick$.next(this.pointsPerClick);
       this.clickUpgrades$.next(this.clickUpgrades);
 
-      this._logService.addLog(`You bought a ${upgrade.name}!`);
       this.addAchievement(upgrade);
     }
   }
@@ -106,12 +106,12 @@ export class GameService {
       this.points -= defense.cost;
       this.defensePoints += defense.pointsIncrease;
       defense.count += 1;
+      this._logService.addLog(`You bought a ${defense.name} for $${defense.cost}.`);
       defense.cost = Math.floor(defense.cost * defense.costIncrease);
 
       this.points$.next(this.points);
       this.defensePoints$.next(this.defensePoints)
       
-      this._logService.addLog(`You bought a ${defense.name}!`);
       this.addAchievement(defense);
     }
   }
