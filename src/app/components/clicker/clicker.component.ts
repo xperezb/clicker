@@ -2,6 +2,7 @@ import { Component, ComponentRef, Renderer2, ViewChild, ViewContainerRef } from 
 import { GameService } from '../../services/game.service';
 import { CashComponent } from '../cash/cash.component';
 import { MoreCashComponent } from '../more-cash/more-cash.component';
+import { MoreMoreCashComponent } from '../more-more-cash/more-more-cash.component';
 
 @Component({
   selector: 'app-clicker',
@@ -20,7 +21,7 @@ export class ClickerComponent {
   }
 
   private createFallingBills(): void {
-    const ComponentToRender = this._gameService.pointsPerClick > 100 ? MoreCashComponent : CashComponent;
+    const ComponentToRender = this.getComponentToRender();
 
     for (let i = 0; i < 1; i++) {
       const componentRef: ComponentRef<CashComponent> = this.cashContainer.createComponent(ComponentToRender);
@@ -35,6 +36,16 @@ export class ClickerComponent {
       setTimeout(() => {
         componentRef.destroy();
       }, 4600);
+    }
+  }
+
+  private getComponentToRender(): any {
+    if (this._gameService.pointsPerClick > 1000) {
+      return MoreMoreCashComponent;
+    } else if (this._gameService.pointsPerClick > 100) {
+      return MoreCashComponent;
+    } else {
+      return CashComponent;
     }
   }
 }
