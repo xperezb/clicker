@@ -11,30 +11,30 @@ import { GameService } from '../../services/game.service';
   styleUrl: './dev-tools.component.css'
 })
 export class DevToolsComponent {
-  constructor(public gameService: GameService) {}
+  constructor(public _gameService: GameService) {}
 
   updatePoints(value: number) {
-    this.gameService.points = value;
-    this.gameService.points$.next(value);
+    this._gameService.points = value;
+    this._gameService.points$.next(value);
   }
 
   updateTotalPoints(value: number) {
-    this.gameService.totalPoints = value;
-    this.gameService.totalPoints$.next(value);
+    this._gameService.totalPoints = value;
+    this._gameService.totalPoints$.next(value);
   }
 
   updatePointsPerClick(value: number) {
-    this.gameService.pointsPerClick = value;
-    this.gameService.pointsPerClick$.next(value);
+    this._gameService.pointsPerClick = value;
+    this._gameService.pointsPerClick$.next(value);
   }
 
   updatePointsPerSecond(value: number) {
-    this.gameService.pointsPerSecond = value;
-    this.gameService.pointsPerSecond$.next(value);
+    this._gameService.pointsPerSecond = value;
+    this._gameService.pointsPerSecond$.next(value);
   }
 
   updateDefensePoints(value: number) {
-    this.gameService.defensePoints = value;
-    this.gameService.defensePoints$.next(value);
+    this._gameService.defensePoints = value;
+    this._gameService.defensePoints$.next(value);
   }
 }

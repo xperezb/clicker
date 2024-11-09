@@ -15,10 +15,10 @@ import { CommonModule } from '@angular/common';
 export class EmpireViewComponent { 
   upgrades: Upgrade[] = [];
   
-  constructor(private gameService: GameService) {}
+  constructor(private _gameService: GameService) {}
 
   ngOnInit() {
-    this.gameService.upgrades$.subscribe(upgrades => {
+    this._gameService.upgrades$.subscribe(upgrades => {
       this.upgrades = upgrades.filter(upgrade => upgrade.count > 0);
     });
   }

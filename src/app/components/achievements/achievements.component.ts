@@ -14,9 +14,9 @@ import { Observable } from 'rxjs';
 export class AchievementsComponent {
   achievements$?: Observable<Upgrade[]>;
 
-  constructor(private gameService: GameService) {}
+  constructor(private _gameService: GameService) {}
 
   ngOnInit() {
-    this.achievements$ = this.gameService.achievements$;
+    this.achievements$ = this._gameService.achievements$;
   }
 }

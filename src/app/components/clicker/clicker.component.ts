@@ -12,17 +12,17 @@ import { MoreCashComponent } from '../more-cash/more-cash.component';
 export class ClickerComponent {
   @ViewChild('cashContainer', { read: ViewContainerRef }) cashContainer!: ViewContainerRef;
 
-  constructor(private gameService: GameService) {}
+  constructor(private _gameService: GameService) {}
 
   handleClick() {
-    this.gameService.click();
+    this._gameService.click();
     this.createFallingBills();
   }
 
   private createFallingBills(): void {
-    const ComponentToRender = this.gameService.pointsPerClick > 100 ? MoreCashComponent : CashComponent;
+    const ComponentToRender = this._gameService.pointsPerClick > 100 ? MoreCashComponent : CashComponent;
 
-    for (let i = 0; i < this.gameService.pointsPerClick; i++) {
+    for (let i = 0; i < this._gameService.pointsPerClick; i++) {
       const componentRef: ComponentRef<CashComponent> = this.cashContainer.createComponent(ComponentToRender);
 
       // Posicionar el billete en una posición aleatoria en todo el ancho de la pantalla

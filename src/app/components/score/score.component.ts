@@ -13,9 +13,9 @@ import { Observable } from 'rxjs';
 export class ScoreComponent implements OnInit {
   points$?: Observable<number>;
   
-  constructor(private gameService: GameService) {}
+  constructor(private _gameService: GameService) {}
 
   ngOnInit() {
-    this.points$ = this.gameService.points$;
+    this.points$ = this._gameService.points$;
   }
 }

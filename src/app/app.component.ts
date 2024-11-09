@@ -38,26 +38,26 @@ export class AppComponent {
   totalPoints$?: Observable<number>;
   showDevTools = false;
 
-  constructor(private gameService: GameService) {
-    this.upgrades$ = this.gameService.upgrades$;
-    this.clickUpgrades$ = this.gameService.clickUpgrades$;
-    this.defenses$ = this.gameService.defenses$;
-    this.points$ = this.gameService.points$;
-    this.totalPoints$ = this.gameService.totalPoints$;
+  constructor(private _gameService: GameService) {
+    this.upgrades$ = this._gameService.upgrades$;
+    this.clickUpgrades$ = this._gameService.clickUpgrades$;
+    this.defenses$ = this._gameService.defenses$;
+    this.points$ = this._gameService.points$;
+    this.totalPoints$ = this._gameService.totalPoints$;
   }
 
   ngOnInit() {}
 
   public buyUpgrade = (upgradeId: number) => {
-    this.gameService.buyUpgrade(upgradeId);
+    this._gameService.buyUpgrade(upgradeId);
   }
 
   public buyClickUpgrade = (upgradeId: number) => {
-    this.gameService.buyClickUpgrade(upgradeId);
+    this._gameService.buyClickUpgrade(upgradeId);
   }
 
   public buyDefense = (defenseId: number) => {
-    this.gameService.buyDefense(defenseId);
+    this._gameService.buyDefense(defenseId);
   }
 
   public toggleDevTools() {
