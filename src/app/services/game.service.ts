@@ -30,6 +30,8 @@ export class GameService {
   achievements$ = new BehaviorSubject<Upgrade[]>([]);
 
   constructor(private _logService: LogService) {
+    this._logService.addLog(`Welcome to Drug Lord Clicker.`);
+    this._logService.addLog(`Make your first deal and expand your empire!`);
     setInterval(() => {
       this.incrementPoints(this.pointsPerSecond);
     }, 1000);
