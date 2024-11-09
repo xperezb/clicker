@@ -45,8 +45,6 @@ export class GameService {
         this.totalPoints += 1;
         this.points$.next(this.points);
         this.totalPoints$.next(this.totalPoints);
-        this.updateAvailableUpgrades();
-        this.updateAvailableClickUpgrades();
         pointsToAdd -= 1;
       } else {
         clearInterval(intervalId);
@@ -59,8 +57,6 @@ export class GameService {
     this.totalPoints += points;
     this.points$.next(this.points);
     this.totalPoints$.next(this.totalPoints);
-    this.updateAvailableUpgrades(); 
-    this.updateAvailableClickUpgrades();
   }
 
   click() {
@@ -122,15 +118,5 @@ export class GameService {
       this.achievements$.next([...currentAchievements, upgrade]);
       this._logService.addLog(`Achievement unlocked: My first ${upgrade.name}!`);
     }
-  }
-
-  private updateAvailableUpgrades() {
-    const availableUpgrades = this.upgrades.filter(upgrade => this.totalPoints >= upgrade.requiredPoints);
-    this.upgrades$.next(availableUpgrades);
-  }
-
-  private updateAvailableClickUpgrades() {
-    const availableClickUpgrades = this.clickUpgrades.filter(upgrade => this.totalPoints >= upgrade.requiredPoints);
-    this.clickUpgrades$.next(availableClickUpgrades);
   }
 }
