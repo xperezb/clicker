@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ClickerComponent } from './components/clicker/clicker.component';
 import { ScoreComponent } from './components/score/score.component';
-import { UpgradesComponent } from './components/upgrade/upgrade.component';
 import { GameService } from './services/game.service';
-import { ClickUpgradesComponent } from './components/click-upgrade/click-upgrade.component';
 import { EmpireViewComponent } from './components/empire-view/empire-view.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
-import { DefenseComponent } from './components/defense/defense.component';
 import { LogComponent } from './components/log/log.component';
+import { UpgradesComponent } from './components/upgrades/upgrades.component';
+import { Observable } from 'rxjs';
+import { Defense } from './interfaces/defense';
+import { Upgrade } from './interfaces/upgrade';
 
 @Component({
   selector: 'app-root',
@@ -17,17 +18,43 @@ import { LogComponent } from './components/log/log.component';
     RouterOutlet,
     ClickerComponent,
     ScoreComponent,
-    UpgradesComponent,
-    ClickUpgradesComponent,
     EmpireViewComponent,
     AchievementsComponent,
-    DefenseComponent,
-    LogComponent
+    LogComponent,
+    UpgradesComponent
   ],
   providers: [GameService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'clicker';
+  title = '-Drug Lord Clicker-';
+  upgrades$?: Observable<Upgrade[]>;
+  clickUpgrades$?: Observable<Upgrade[]>;
+  defenses$?: Observable<Defense[]>;
+  points$?: Observable<number>;
+  totalPoints$?: Observable<number>;
+
+  constructor(private gameService: GameService) {
+    this.upgrades$ = this.gameService.upgrades$;
+    this.clickUpgrades$ = this.gameService.clickUpgrades$;
+    this.defenses$ = this.gameService.defenses$;
+    this.points$ = this.gameService.points$;
+    this.totalPoints$ = this.gameService.totalPoints$;
+  }
+
+  ngOnInit() {}
+
+  public buyUpgrade = (upgradeId: number) => {
+    this.gameService.buyUpgrade(upgradeId);
+  }
+
+  public buyClickUpgrade = (upgradeId: number) => {
+    this.gameService.buyClickUpgrade(upgradeId);
+  }
+
+  public buyDefense = (defenseId: number) => {
+    this.gameService.buyDefense(defenseId);
+  }
+
 }

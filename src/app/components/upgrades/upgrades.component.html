@@ -1,0 +1,37 @@
+<div class="master__container">
+  <div class="title">
+    <h2>{{ title }}</h2>
+  </div>
+
+  <div class="container" [style.height]="height">
+    @for (item of items$ | async; track item) {
+      @if (item.requiredPoints <= ((totalPoints$ | async) ?? 0)) {
+        <div class="item__container">
+          @if (!countRight) {
+            <div class="item__count__left">
+              {{ item.count }}
+            </div>
+          }
+          <button
+            class="item__button"
+            (click)="buyItem(item.id)"
+            [disabled]="item.cost > ((points$ | async) ?? 0)">
+            <div class="item__button__icon">
+              <div *ngComponentOutlet="item.icon ?? null" ></div>
+            </div>
+            <div class="item__button__text">
+              {{ item.name }} {{ item.cost }}$ (+{{ item.pointsIncrease }}{{ measure }})
+            </div>
+          </button>
+          @if (countRight) {
+            <div class="item__count__right">
+              {{ item.count }}
+            </div>
+          }
+        </div>
+      }
+    }
+  </div>
+
+
+</div>

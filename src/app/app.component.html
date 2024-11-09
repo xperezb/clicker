@@ -1,25 +1,54 @@
 <div class="game">
 
   <section class="top">
-    <h1 class="title">-Drug Lord Clicker-</h1>
+    <h1 class="title">{{ title }}</h1>
   </section>
 
   <div class="bottom">
     <section class="left">
       <app-log></app-log>
-      <app-click-upgrades class="upgrades"></app-click-upgrades>
+      <app-upgrades
+        class="upgrades"
+        [title]="'Hire Resources'"
+        [items$]="clickUpgrades$"
+        [points$]="points$"
+        [totalPoints$]="totalPoints$"
+        [measure]="'$/deal'"
+        [countRight]="true"
+        [buyItem]="buyClickUpgrade">
+      </app-upgrades>
     </section>
-  
+
     <section class="middle">
       <app-score></app-score>
       <app-clicker></app-clicker>
       <app-empire-view></app-empire-view>
       <app-achievements></app-achievements>
     </section>
-  
+
     <section class="right">
-      <app-defense class="defense"></app-defense>
-      <app-upgrades class="upgrades"></app-upgrades>
+      <app-upgrades
+        class="defense"
+        [title]="'Invest in Defense'"
+        [items$]="defenses$"
+        [points$]="points$"
+        [totalPoints$]="totalPoints$"
+        [measure]="'DP'"
+        [countRight]="false"
+        [height]="'200px'"
+        [buyItem]="buyDefense">
+      </app-upgrades>
+      <app-upgrades
+        class="upgrades"
+        [title]="'Invest in Drug Empire'"
+        [items$]="upgrades$"
+        [points$]="points$"
+        [totalPoints$]="totalPoints$"
+        [measure]="'$/week'"
+        [countRight]="false"
+        [buyItem]="buyUpgrade">
+      </app-upgrades>
     </section>
   </div>
+
 </div>
