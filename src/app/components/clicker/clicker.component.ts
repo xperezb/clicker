@@ -22,11 +22,11 @@ export class ClickerComponent {
   private createFallingBills(): void {
     const ComponentToRender = this._gameService.pointsPerClick > 100 ? MoreCashComponent : CashComponent;
 
-    for (let i = 0; i < this._gameService.pointsPerClick; i++) {
+    for (let i = 0; i < 1; i++) {
       const componentRef: ComponentRef<CashComponent> = this.cashContainer.createComponent(ComponentToRender);
 
       // Posicionar el billete en una posición aleatoria en todo el ancho de la pantalla
-      const xPos = Math.random() * (window.innerWidth -50);
+      const xPos = Math.random() * (window.innerWidth -100);
       componentRef.location.nativeElement.style.position = 'absolute';
       componentRef.location.nativeElement.style.left = `${xPos}px`;
       componentRef.location.nativeElement.style.top = `-50px`; // Fuera de la pantalla
