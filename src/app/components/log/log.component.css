@@ -15,6 +15,14 @@
     margin-bottom: 5px;
 }
 
+.message.default {
+    color: black;
+}
+  
+.message.achievement {
+    color: green;
+}
+
 .container::-webkit-scrollbar {
     width: 12px;
 }

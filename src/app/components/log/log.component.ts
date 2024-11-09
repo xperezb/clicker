@@ -35,4 +35,5 @@ export class LogComponent implements OnInit, AfterViewInit {
 export interface Log {
   id: number;
   message: string;
+  type?: string;
 }

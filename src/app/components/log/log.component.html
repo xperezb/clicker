@@ -2,7 +2,7 @@
 
 <div class="container" #logContainer>
     @for (log of logs$ | async; track log.id) {
-      <div class="message">
+      <div class="message" [ngClass]="log.type">
         {{ log.message }}
       </div>
     }

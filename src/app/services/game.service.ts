@@ -118,7 +118,7 @@ export class GameService {
     if (upgrade.count === 1) {  
       const currentAchievements = this.achievements$.getValue();
       this.achievements$.next([...currentAchievements, upgrade]);
-      this._logService.addLog(`Achievement unlocked: My first ${upgrade.name}!`);
+      this._logService.addLog(`Achievement unlocked: My first ${upgrade.name}!`, 'achievement');
     }
   }
 }

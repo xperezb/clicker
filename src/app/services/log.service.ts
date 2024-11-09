@@ -10,8 +10,8 @@ export class LogService {
   public logs$ = new BehaviorSubject<Log[]>([]);
   private logId = 0;
 
-  addLog(message: string) {
-    const log: Log = { id: this.logId++, message };
+  addLog(message: string, type: string = 'default') {
+    const log: Log = { id: this.logId++, message, type };
     this.logs.push(log);
     this.logs$.next(this.logs);
   }
