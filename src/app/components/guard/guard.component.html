@@ -1,7 +1,9 @@
 <div class="container">
     <div class="guard-rectangle">
-        <div *ngFor="let defense of (defenses$ | async)" class="guard-icon">
-          <ng-container *ngComponentOutlet="defense.icon ?? null"></ng-container>
-        </div>
-      </div>
+        @for(defense of defenses$ | async; track $index; let i = $index) {
+            <div class="guard-icon">
+                <ng-container *ngComponentOutlet="defense.icon ?? null"></ng-container>
+            </div>
+
+        }
 </div>
