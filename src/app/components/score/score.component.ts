@@ -14,6 +14,7 @@ export class ScoreComponent implements OnInit {
   points$?: Observable<number>;
   pointsPerClick$?: Observable<number>;
   pointsPerSecond$?: Observable<number>;
+  defensePoints$?: Observable<number>;
   
   constructor(private _gameService: GameService) {}
 
@@ -21,5 +22,6 @@ export class ScoreComponent implements OnInit {
     this.points$ = this._gameService.points$;
     this.pointsPerClick$ = this._gameService.pointsPerClick$;
     this.pointsPerSecond$ = this._gameService.pointsPerSecond$;
+    this.defensePoints$ = this._gameService.defensePoints$;
   }
 }

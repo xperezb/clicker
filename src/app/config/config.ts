@@ -19,6 +19,7 @@ import { SuperheroComponent } from "../components/empire-view/components/superhe
 import { TruckComponent } from "../components/empire-view/components/truck/truck.component";
 import { Defense } from "../interfaces/defense";
 import { Upgrade } from "../interfaces/upgrade";
+import { Attack } from "../interfaces/attack";
 
 export const UPGRADES: Upgrade[] = [
     {   
@@ -212,9 +213,24 @@ export const UPGRADES: Upgrade[] = [
         name: 'Superhero', 
         cost: 50000000, 
         costIncrease: 1.16, 
-        pointsIncrease: 2000, 
+        pointsIncrease: 100, 
         count: 0, 
         requiredPoints: 20000,
         icon: SuperheroComponent 
     }
   ]
+
+  export const ATTACKS: Attack[] = [
+    { 
+        id: 1, 
+        name: 'Gang Assault',
+        points: 50, 
+        icon: FbiAgentComponent
+    },
+    { 
+        id: 2, 
+        name: 'Police Raid',
+        points: 100,
+        icon: PoliceComponent
+    }
+]

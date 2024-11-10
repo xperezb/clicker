@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Upgrade } from '../interfaces/upgrade';
-import { UPGRADES, CLICK_UPGRADES, DEFENSES } from '../config/config';
+import { UPGRADES, CLICK_UPGRADES, DEFENSES, ATTACKS } from '../config/config';
 import { Defense } from '../interfaces/defense';
 import { LogService } from './log.service';
+import { Attack } from '../interfaces/attack';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +16,11 @@ export class GameService {
   public pointsPerSecond = 0;
   public defensePoints = 0;
   private firstClick = true;
-
+  
   upgrades: Upgrade[] = UPGRADES;
   defenses: Defense[] = DEFENSES;
   clickUpgrades: Upgrade[] = CLICK_UPGRADES;
+  activeDefenses: Defense[] = []; 
 
   points$ = new BehaviorSubject<number>(this.points);
   defensePoints$ = new BehaviorSubject<number>(this.defensePoints);
@@ -30,9 +32,9 @@ export class GameService {
   defenses$ = new BehaviorSubject<Defense[]>(this.defenses);
   achievements$ = new BehaviorSubject<Upgrade[]>([]);
 
-  public newClickUpgrade$ = new Subject<Upgrade>();
-  public currentDefenses$ = new BehaviorSubject<Defense[]>([]);
-
+  public currentClickUpgrade$ = new BehaviorSubject<Upgrade[]>([]);
+  public currentDefenses$ = new BehaviorSubject<Defense[]>(this.activeDefenses);
+  public attackEvent$ = new Subject<Attack>();
 
   constructor(private _logService: LogService) {
     this._logService.addLog(`Welcome to Drug Lord Clicker.`);
@@ -103,26 +105,29 @@ export class GameService {
       this.points$.next(this.points);
       this.pointsPerClick$.next(this.pointsPerClick);
       this.clickUpgrades$.next(this.clickUpgrades);
-      this.newClickUpgrade$.next(upgrade);
+      const updatedClickUpgrades = [...this.currentClickUpgrade$.getValue(), upgrade];
+      this.currentClickUpgrade$.next(updatedClickUpgrades);
 
       this.addAchievement(upgrade);
     }
   }
+  
   buyDefense(defenseId: number) {
-    const defense = this.defenses.find(u => u.id === defenseId);
+    const defense = this.defenses.find(d => d.id === defenseId);
     if (defense && this.points >= defense.cost) {
       this.points -= defense.cost;
       this.defensePoints += defense.pointsIncrease;
+      this.defensePoints$.next(this.defensePoints);
       defense.count += 1;
+
+      const defenseInstance = { ...defense }; // Copia de la defensa comprada
+      this.activeDefenses.push(defenseInstance); // Agregar al estado activo
+      this.currentDefenses$.next(this.activeDefenses);
+
+      // Log y costo de defensa actualizados
       this._logService.addLog(`You bought a ${defense.name} for $${defense.cost}.`);
       defense.cost = Math.floor(defense.cost * defense.costIncrease);
-
       this.points$.next(this.points);
-      this.defensePoints$.next(this.defensePoints);
-      const updatedDefenses = [...this.currentDefenses$.getValue(), defense];
-      this.currentDefenses$.next(updatedDefenses);
-      
-      this.addAchievement(defense);
     }
   }
 
@@ -132,5 +137,76 @@ export class GameService {
       this.achievements$.next([...currentAchievements, upgrade]);
       this._logService.addLog(`Achievement unlocked: My first ${upgrade.name}!`, 'achievement');
     }
+  }
+
+  public triggerAttack() {
+    const attack = ATTACKS[Math.floor(Math.random() * ATTACKS.length)];
+    this._logService.addLog(`Oh no! A ${attack.name} is happening!`, 'attack');
+    this._logService.addLog(`You recieve ${attack.points} attack points from a ${attack.name}`, 'attack');
+    this.attackEvent$.next(attack); // Emitir el evento de ataque
+    this.processAttack(attack);
+  }
+
+  private processAttack(attack: Attack) {
+    const attackPoints = attack.points;
+  
+    // Debugging: mostrar valores antes de la comparación
+    console.log('Puntos de defensa antes del ataque:', this.defensePoints);
+    console.log('Puntos de ataque:', attackPoints);
+  
+    // Comprobar si hay suficientes puntos de defensa para detener el ataque
+    if (this.defensePoints >= attackPoints) {
+      console.log('Defensa suficiente para detener el ataque');
+      this.defensePoints -= attackPoints;
+      this.defensePoints$.next(this.defensePoints);
+      const remainingAttack = attackPoints - this.defensePoints;
+      this.reduceDefenses(remainingAttack);
+
+    } else {
+      // Si no hay suficiente defensa, calculamos el ataque restante
+      const remainingAttack = attackPoints - this.defensePoints;
+      this.defensePoints = 0;  // Restamos toda la defensa disponible
+      this.defensePoints$.next(this.defensePoints);
+      
+      // Aquí es donde reducimos las defensas activas
+      console.log('Defensa insuficiente, resto de ataque:', remainingAttack);
+      this.reduceDefenses(remainingAttack);
+    }
+  
+    // Emitir el estado actualizado de las defensas activas
+    console.log('Defensas activas antes de la actualización:', this.activeDefenses);
+    this.currentDefenses$.next(this.activeDefenses.filter(d => d.pointsIncrease > 0));  // Solo las defensas con puntos restantes
+  }
+  
+  private reduceDefenses(remainingAttack: number) {
+    // Ordenamos las defensas activas por `pointsIncrease` en orden descendente
+    this.activeDefenses.sort((a, b) => b.pointsIncrease - a.pointsIncrease);
+  
+    // Usamos un ciclo while con un índice que no se vea afectado por la eliminación de elementos.
+    let i = 0;
+    while (i < this.activeDefenses.length && remainingAttack > 0) {
+      const defense = this.activeDefenses[i];
+  
+      // Verificamos si la defensa puede ser completamente destruida o no
+      if (defense.pointsIncrease <= remainingAttack) {
+        // Si el ataque destruye la defensa, restamos los puntos de ataque y eliminamos la defensa
+        remainingAttack -= defense.pointsIncrease;
+        this.activeDefenses.splice(i, 1);  // Eliminar la defensa del array
+        console.log(`Defensa destruida: ${defense.name}, puntos restantes de ataque: ${remainingAttack}`);
+        // No incrementamos `i` porque `splice` ajusta automáticamente los índices
+      } else {
+        // Si la defensa no se destruye completamente, reducimos sus puntos
+        defense.pointsIncrease -= remainingAttack;
+        remainingAttack = 0;  // El ataque ha sido detenido, no queda más daño por aplicar
+        console.log(`Defensa parcialmente destruida: ${defense.name}, puntos restantes de ataque: ${remainingAttack}`);
+        i++;  // Solo avanzamos el índice si no eliminamos la defensa
+      }
+    }
+  
+    // Imprimir el estado actualizado de las defensas activas, para asegurarnos de que se imprime siempre
+    console.log('Defensas después del ataque:', this.activeDefenses);
+  
+    // Emitimos el estado actualizado de las defensas activas
+    this.currentDefenses$.next(this.activeDefenses);
   }
 }

@@ -67,4 +67,7 @@ export class AppComponent {
     this.showDevTools = !this.showDevTools;
   }
 
+  public triggerAttack() {
+    this._gameService.triggerAttack();
+  }
 }

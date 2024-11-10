@@ -23,6 +23,10 @@
     color: green;
 }
 
+.message.attack {
+    color: red;
+}
+
 .container::-webkit-scrollbar {
     width: 12px;
 }

@@ -18,17 +18,18 @@ export class PatrolComponent {
   constructor(private _gameService: GameService) {}
 
   ngOnInit() {
-
-    this.totalPoints$ = this._gameService.totalPoints$;
-    // Suscribirse a upgrades nuevos comprados
-    this._gameService.newClickUpgrade$.subscribe(newUpgrade => {
-      // Añadir el nuevo upgrade al grupo correspondiente en el mapa `clickUpgradesById`
-      if (!this.clickUpgradesById.has(newUpgrade.id)) {
-        this.clickUpgradesById.set(newUpgrade.id, []); // Crear una nueva lista si el `id` no existe
-      }
-      // Usamos el operador de propagación para actualizar el array sin cambiar la referencia
-      const upgradesArray = [...this.clickUpgradesById.get(newUpgrade.id)!, newUpgrade];
-      this.clickUpgradesById.set(newUpgrade.id, upgradesArray);
+    // Suscribirse a `newClickUpgrade$` para recibir la lista completa de mejoras
+    this._gameService.currentClickUpgrade$.subscribe((upgrades) => {
+      // Limpiar el mapa antes de agrupar
+      this.clickUpgradesById.clear();
+      
+      // Agrupar las mejoras por `id`
+      upgrades.forEach((upgrade) => {
+        if (!this.clickUpgradesById.has(upgrade.id)) {
+          this.clickUpgradesById.set(upgrade.id, []);
+        }
+        this.clickUpgradesById.get(upgrade.id)!.push(upgrade);
+      });
     });
   }
 
