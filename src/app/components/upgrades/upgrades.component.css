@@ -29,6 +29,12 @@
   cursor: pointer;
 }
 
+.item__button__text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+
 .item__button__icon {
   margin-right: 16px;
 }
