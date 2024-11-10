@@ -2,7 +2,9 @@ import { AhmedComponent } from "../components/empire-view/components/ahmed/ahmed
 import { BikeComponent } from "../components/empire-view/components/bike/bike.component";
 import { CigsComponent } from "../components/empire-view/components/cigs/cigs.component";
 import { CocaineComponent } from "../components/empire-view/components/cocaine/cocaine.component";
+import { DeaAgentComponent } from "../components/empire-view/components/dea-agent/dea-agent.component";
 import { FarmComponent } from "../components/empire-view/components/farm/farm.component";
+import { FbiAgentComponent } from "../components/empire-view/components/fbi-agent/fbi-agent.component";
 import { GhbComponent } from "../components/empire-view/components/ghb/ghb.component";
 import { HeroinComponent } from "../components/empire-view/components/heroin/heroin.component";
 import { HtrafficComponent } from "../components/empire-view/components/htraffic/htraffic.component";
@@ -10,8 +12,10 @@ import { MethComponent } from "../components/empire-view/components/meth/meth.co
 import { MotorbikeComponent } from "../components/empire-view/components/motorbike/motorbike.component";
 import { Ms13Component } from "../components/empire-view/components/ms13/ms13.component";
 import { OxycodoneComponent } from "../components/empire-view/components/oxycodone/oxycodone.component";
+import { PoliceComponent } from "../components/empire-view/components/police/police.component";
 import { PrerolledComponent } from "../components/empire-view/components/prerolled/prerolled.component";
 import { St18Component } from "../components/empire-view/components/st18/st18.component";
+import { SuperheroComponent } from "../components/empire-view/components/superhero/superhero.component";
 import { TruckComponent } from "../components/empire-view/components/truck/truck.component";
 import { Defense } from "../interfaces/defense";
 import { Upgrade } from "../interfaces/upgrade";
@@ -156,7 +160,8 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 1500, 
         count: 0, 
-        requiredPoints: 1000
+        requiredPoints: 1000,
+        icon: PoliceComponent
     }, 
     { 
         id: 6, 
@@ -165,16 +170,18 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 2000, 
         count: 0, 
-        requiredPoints: 2000
+        requiredPoints: 2000,
+        icon: FbiAgentComponent
     },
     { 
         id: 7, 
-        name: 'CIA Agent', 
+        name: 'DEA Agent', 
         cost: 5000000, 
         costIncrease: 1.16, 
         pointsIncrease: 2000, 
         count: 0, 
-        requiredPoints: 2000 
+        requiredPoints: 2000,
+        icon: DeaAgentComponent 
     }
     
   ];
@@ -199,5 +206,15 @@ export const UPGRADES: Upgrade[] = [
         count: 0, 
         requiredPoints: 0,
         icon: St18Component
+    },
+    { 
+        id: 3, 
+        name: 'Superhero', 
+        cost: 50000000, 
+        costIncrease: 1.16, 
+        pointsIncrease: 2000, 
+        count: 0, 
+        requiredPoints: 20000,
+        icon: SuperheroComponent 
     }
   ]

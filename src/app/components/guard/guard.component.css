@@ -1,14 +1,15 @@
 .container {
-    height: 400px;
+    height: 131px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 4px solid black;
     border-radius: 10px;
     padding: 5px;
     box-shadow: 0 0 0 4px #ccc, 0 0 0 8px black;
+    margin-top: 25px;
 }
 
-.patrol-rectangle {
+.guard-rectangle {
     border-radius: 10px;
     display: flex;
     align-items: flex-end;
@@ -18,16 +19,12 @@
     overflow: hidden;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    background-image: url('https://www.shutterstock.com/image-vector/empty-city-long-road-along-260nw-1932192143.jpg');
+    background-image: url(https://www.shutterstock.com/image-vector/empty-city-long-road-along-260nw-1932192143.jpg);
     background-size: cover;
-    background-position: center top; 
+    background-position: center top;
 }
 
-.patrol-rectangle:not(:last-child) {
-    margin-bottom: 5px;
-}
-  
-  .patrol-icon {
+.guard-icon {
     position: absolute;
     animation: patrolAnimation 5s linear infinite alternate;
     font-size: 24px;

@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="guard-rectangle">
+        <div *ngFor="let defense of (defenses$ | async)" class="guard-icon">
+          <ng-container *ngComponentOutlet="defense.icon ?? null"></ng-container>
+        </div>
+      </div>
+</div>

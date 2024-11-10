@@ -12,12 +12,12 @@ import { Defense } from './interfaces/defense';
 import { Upgrade } from './interfaces/upgrade';
 import { DevToolsComponent } from './components/dev-tools/dev-tools.component';
 import { PatrolComponent } from "./components/patrol/patrol.component";
+import { GuardComponent } from './components/guard/guard.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     ClickerComponent,
     ScoreComponent,
     EmpireViewComponent,
@@ -25,7 +25,8 @@ import { PatrolComponent } from "./components/patrol/patrol.component";
     LogComponent,
     UpgradesComponent,
     DevToolsComponent,
-    PatrolComponent
+    PatrolComponent,
+    GuardComponent
 ],
   providers: [GameService],
   templateUrl: './app.component.html',

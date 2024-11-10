@@ -1,1 +1,5 @@
-<h2>{{ points$ | async | number:'1.0-0' }} $/week</h2>
+<h2>{{ points$ | async | number:'1.0-0' }} $</h2>
+<div class="mini-score">
+    <span style="margin-right: 60px">{{ pointsPerSecond$ | async | number:'1.0-0' }} $/week</span>
+    <span>{{ pointsPerClick$ | async | number:'1.0-0' }} $/deal</span>
+</div>

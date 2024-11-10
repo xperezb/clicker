@@ -14,6 +14,7 @@ export class GameService {
   public pointsPerClick = 1;
   public pointsPerSecond = 0;
   public defensePoints = 0;
+  private firstClick = true;
 
   upgrades: Upgrade[] = UPGRADES;
   defenses: Defense[] = DEFENSES;
@@ -30,6 +31,7 @@ export class GameService {
   achievements$ = new BehaviorSubject<Upgrade[]>([]);
 
   public newClickUpgrade$ = new Subject<Upgrade>();
+  public currentDefenses$ = new BehaviorSubject<Defense[]>([]);
 
 
   constructor(private _logService: LogService) {
@@ -65,6 +67,10 @@ export class GameService {
   }
 
   click() {
+    if (this.firstClick) {
+      this._logService.addLog(`Achievement unlocked: My first $deal!`, 'achievement');
+      this.firstClick = false;
+    }
     this.addPoints(this.pointsPerClick);
   }
 
@@ -112,7 +118,9 @@ export class GameService {
       defense.cost = Math.floor(defense.cost * defense.costIncrease);
 
       this.points$.next(this.points);
-      this.defensePoints$.next(this.defensePoints)
+      this.defensePoints$.next(this.defensePoints);
+      const updatedDefenses = [...this.currentDefenses$.getValue(), defense];
+      this.currentDefenses$.next(updatedDefenses);
       
       this.addAchievement(defense);
     }
