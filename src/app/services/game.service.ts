@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Upgrade } from '../interfaces/upgrade';
 import { UPGRADES, CLICK_UPGRADES, DEFENSES } from '../config/config';
 import { Defense } from '../interfaces/defense';
@@ -28,6 +28,9 @@ export class GameService {
   clickUpgrades$ = new BehaviorSubject<Upgrade[]>(this.clickUpgrades);
   defenses$ = new BehaviorSubject<Defense[]>(this.defenses);
   achievements$ = new BehaviorSubject<Upgrade[]>([]);
+
+  public newClickUpgrade$ = new Subject<Upgrade>();
+
 
   constructor(private _logService: LogService) {
     this._logService.addLog(`Welcome to Drug Lord Clicker.`);
@@ -94,6 +97,7 @@ export class GameService {
       this.points$.next(this.points);
       this.pointsPerClick$.next(this.pointsPerClick);
       this.clickUpgrades$.next(this.clickUpgrades);
+      this.newClickUpgrade$.next(upgrade);
 
       this.addAchievement(upgrade);
     }

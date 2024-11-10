@@ -2,7 +2,6 @@
   margin-top: 1rem;
   background-image: url('https://img.freepik.com/premium-vector/pixel-art-landscapes-flower-field-background_52683-125359.jpg');
   background-size: cover;
-  /* height: 500px; */
   width: 500px;
   display: grid;
   grid-template-columns: repeat(8, 1fr); 

@@ -12,6 +12,7 @@ import { Ms13Component } from "../components/empire-view/components/ms13/ms13.co
 import { OxycodoneComponent } from "../components/empire-view/components/oxycodone/oxycodone.component";
 import { PrerolledComponent } from "../components/empire-view/components/prerolled/prerolled.component";
 import { St18Component } from "../components/empire-view/components/st18/st18.component";
+import { TruckComponent } from "../components/empire-view/components/truck/truck.component";
 import { Defense } from "../interfaces/defense";
 import { Upgrade } from "../interfaces/upgrade";
 
@@ -145,7 +146,8 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 100, 
         count: 0, 
-        requiredPoints: 400 
+        requiredPoints: 400,
+        icon: TruckComponent
     },
     { 
         id: 5, 

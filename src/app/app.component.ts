@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { Defense } from './interfaces/defense';
 import { Upgrade } from './interfaces/upgrade';
 import { DevToolsComponent } from './components/dev-tools/dev-tools.component';
+import { PatrolComponent } from "./components/patrol/patrol.component";
 
 @Component({
   selector: 'app-root',
@@ -23,8 +24,9 @@ import { DevToolsComponent } from './components/dev-tools/dev-tools.component';
     AchievementsComponent,
     LogComponent,
     UpgradesComponent,
-    DevToolsComponent
-  ],
+    DevToolsComponent,
+    PatrolComponent
+],
   providers: [GameService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

@@ -1,0 +1,38 @@
+.container {
+    /* overflow-y: auto; */
+  border: 4px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 0 0 4px #ccc, 0 0 0 8px black;
+}
+
+.patrol-rectangle {
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 137px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    background-image: url('https://www.shutterstock.com/image-vector/empty-city-long-road-along-260nw-1932192143.jpg');
+    background-size: cover; /* La imagen se ajusta al tamaño del contenedor */
+  background-position: center top; /* Centra la imagen en el contenedor */
+
+}
+  
+  .patrol-icon {
+    position: absolute;
+    animation: patrolAnimation 5s linear infinite alternate;
+    font-size: 24px;
+  }
+  
+  @keyframes patrolAnimation {
+    from {
+      left: 0;
+    }
+    to {
+      left: 100%;
+    }
+  }

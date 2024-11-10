@@ -1,9 +1,9 @@
 <h4>Log</h4>
 
 <div class="container" #logContainer>
-    @for (log of logs$ | async; track log.id) {
-      <div class="message" [ngClass]="log.type">
-        {{ log.message }}
-      </div>
-    }
-  </div>
+  @for (log of logs$ | async; track log.id) {
+    <div class="message" [ngClass]="log.type">
+      {{ log.message }}
+    </div>
+  }
+</div>
