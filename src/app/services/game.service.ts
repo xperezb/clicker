@@ -105,8 +105,6 @@ export class GameService {
       this.points$.next(this.points);
       this.pointsPerClick$.next(this.pointsPerClick);
       this.clickUpgrades$.next(this.clickUpgrades);
-      const updatedClickUpgrades = [...this.currentClickUpgrade$.getValue(), upgrade];
-      this.currentClickUpgrade$.next(updatedClickUpgrades);
 
       this.addAchievement(upgrade);
     }

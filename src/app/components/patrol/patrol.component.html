@@ -1,22 +1,18 @@
 @if(clickUpgradesById.size > 0) {
     <div class="container"> 
-        @for(group of clickUpgradesById | keyvalue; track group.key) {
-            <div class="patrol-rectangle">
-              @for(clickUpgrade of group.value; track i; let i = $index) {
-                <div class="patrol-icon">
-                  <div *ngComponentOutlet="clickUpgrade.icon ?? null"></div>
-                </div>
-              }
+      @for(group of clickUpgradesById | keyvalue; track group.key) {
+        <div class="patrol-rectangle">
+          @for(clickUpgrade of group.value; track clickUpgrade.id) {
+            <div class="patrol-icon">
+              <div *ngComponentOutlet="clickUpgrade.icon ?? null"></div>
             </div>
-        }
+          }
+        </div>
+      }
     </div>
-} @else {
+  } @else {
     <div class="container"> 
-       
-            <div class="patrol-rectangle">
-             
-            </div>
-        
+      <div class="patrol-rectangle"></div>
     </div>
-}
-
+  }
+  
