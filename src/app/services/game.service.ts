@@ -141,7 +141,10 @@ export class GameService {
     this._logService.addLog(`Oh no! A ${attack.name} is happening!`, 'attack');
     this._logService.addLog(`You recieve ${attack.points} attack points from a ${attack.name}`, 'attack');
     this.attackEvent$.next(attack);
-    this.processAttack(attack);
+    setTimeout(() => {
+      this.processAttack(attack);
+    }
+    , 10000);
   }
 
   private processAttack(attack: Attack) {
