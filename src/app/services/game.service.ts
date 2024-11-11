@@ -164,7 +164,7 @@ export class GameService {
         const remainingDefense = this.defensePoints - attackPoints;
   
         this.defensePoints$.next(remainingDefense);
-        this.reduceDefenses(attackPoints);
+        this.reduceDefenses(attackPoints, attack);
       }
     } else {
       this.points = 0;
@@ -179,7 +179,7 @@ export class GameService {
     }
   }
   
-  private reduceDefenses(attackPoints: number) {
+  private reduceDefenses(attackPoints: number, attack: Attack) {
     this.activeDefenses.sort((a, b) => b.pointsIncrease - a.pointsIncrease);
   
     let i = 0;
@@ -199,9 +199,9 @@ export class GameService {
         this._logService.addLog(`Defense ${defense.name} partially reduced by ${attackPoints} points. Remaining defense points: ${defense.pointsIncrease}`);
       }
     }
-
     this.defensePoints$.next(this.defensePoints);
     this.currentDefenses$.next(this.activeDefenses);
+    this._logService.addLog(`You successfully repeled the ${attack.name}.`);
   }
 
   private reduceUpgrades() {
