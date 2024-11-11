@@ -151,17 +151,14 @@ export class GameService {
     const attackPoints = attack.points;
   
     if (this.defensePoints >= attackPoints) {
-      if (this.defensePoints - attackPoints <= 0) {
-        if (this.defensePoints - attackPoints < 0) {
-          this.points = 0;
-          this.points$.next(this.points); 
-        }
-        
+      if (this.defensePoints - attackPoints <= 0) {        
         this.defensePoints = 0;
         this.activeDefenses = [];
         
         this.defensePoints$.next(this.defensePoints);
         this.currentDefenses$.next(this.activeDefenses);
+        this._logService.addLog(`Your successfully repealed the ${attack.name}.`);
+        this._logService.addLog(`In the heat of the battle you lost all your defenses.`);
         return;
       } else {
         const remainingDefense = this.defensePoints - attackPoints;
@@ -176,6 +173,8 @@ export class GameService {
       this.points$.next(this.points); 
       this.defensePoints$.next(this.defensePoints);
       this.currentDefenses$.next(this.activeDefenses);
+      this._logService.addLog(`Your defenses aren't enough to counter the ${attack.name}.`);
+      this._logService.addLog(`You lost all your cash.`);
     }
   }
   
@@ -190,11 +189,13 @@ export class GameService {
         attackPoints -= defense.pointsIncrease;
         this.defensePoints -= defense.pointsIncrease;
         this.activeDefenses.splice(i, 1);
+        this._logService.addLog(`A ${defense.name} died with honor. Remaining defense points: ${this.defensePoints}`);
       } else {
         defense.pointsIncrease -= attackPoints;
         this.defensePoints -= defense.pointsIncrease;
         attackPoints = 0;
         i++;
+        this._logService.addLog(`Defense ${defense.name} partially reduced by ${attackPoints} points. Remaining defense points: ${defense.pointsIncrease}`);
       }
     }
 
