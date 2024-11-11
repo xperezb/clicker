@@ -173,6 +173,7 @@ export class GameService {
       this.currentDefenses$.next(this.activeDefenses);
       this._logService.addLog(`Your defenses aren't enough to counter the ${attack.name}.`);
       this._logService.addLog(`You lost all your cash.`);
+      this.reduceUpgrades();
     }
   }
   
@@ -199,5 +200,42 @@ export class GameService {
 
     this.defensePoints$.next(this.defensePoints);
     this.currentDefenses$.next(this.activeDefenses);
+  }
+
+  private reduceUpgrades() {
+    let totalPointsPerSecondReduction = 0;
+    let totalPointsPerClickReduction = 0;
+  
+    // Reducir la cantidad de cada upgrade a la mitad
+    this.upgrades.forEach(upgrade => {
+      const oldCount = upgrade.count;
+      upgrade.count = Math.floor(upgrade.count / 2);  // Reducir a la mitad y redondear hacia abajo
+      const reducedPoints = (oldCount - upgrade.count) * upgrade.pointsIncrease;
+      totalPointsPerSecondReduction += reducedPoints;
+    });
+  
+    this.clickUpgrades.forEach(clickUpgrade => {
+      const oldCount = clickUpgrade.count;
+      clickUpgrade.count = Math.floor(clickUpgrade.count / 2);  // Reducir a la mitad y redondear hacia abajo
+      const reducedPoints = (oldCount - clickUpgrade.count) * clickUpgrade.pointsIncrease;
+      totalPointsPerClickReduction += reducedPoints;
+    });
+  
+    // Emitir los cambios si es necesario
+    this.upgrades$.next(this.upgrades);
+    this.clickUpgrades$.next(this.clickUpgrades);
+  
+    // Actualizar los puntos
+    this.pointsPerSecond -= totalPointsPerSecondReduction;
+    this.pointsPerClick -= totalPointsPerClickReduction;
+  
+    // Emitir los valores actualizados
+    this.pointsPerSecond$.next(this.pointsPerSecond);
+    this.pointsPerClick$.next(this.pointsPerClick);
+  
+    // Log para saber lo que se redujo
+    this._logService.addLog("Your upgrades have been reduced by half due to the loss in battle.");
+    this._logService.addLog(`You lost ${totalPointsPerSecondReduction} $/week.`);
+    this._logService.addLog(`You lost ${totalPointsPerClickReduction} $/deal.`);
   }
 }
