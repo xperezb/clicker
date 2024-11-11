@@ -12,7 +12,7 @@ import { Attack } from '../interfaces/attack';
 export class GameService {
   public points = 0;
   public totalPoints = 0;
-  public pointsPerClick = 15555555;
+  public pointsPerClick = 1;
   public pointsPerSecond = 0;
   public defensePoints = 0;
   private firstClick = true;
