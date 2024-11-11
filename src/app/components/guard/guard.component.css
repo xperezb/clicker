@@ -19,9 +19,9 @@
     overflow: hidden;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    background-image: url(https://www.shutterstock.com/image-vector/empty-city-long-road-along-260nw-1932192143.jpg);
-    background-size: cover;
-    background-position: center top;
+    background-image: url('../../../assets/warehouse_pixel_art_resized_570x230.png');
+    background-size: fit;
+    background-position: center bottom;
 }
 
 .guard-icon {

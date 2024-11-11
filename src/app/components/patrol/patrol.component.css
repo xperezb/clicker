@@ -18,7 +18,7 @@
     overflow: hidden;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    background-image: url('https://www.shutterstock.com/image-vector/empty-city-long-road-along-260nw-1932192143.jpg');
+    background-image: url('../../../assets/empty-city-long-road-along-260nw-1932192143.webp');
     background-size: cover;
     background-position: center top; 
 }
