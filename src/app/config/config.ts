@@ -28,7 +28,7 @@ export const UPGRADES: Upgrade[] = [
         cost: 10, costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
-        requiredPoints: 0, 
+        requiredPoints: 5, 
         icon: CigsComponent 
     },
     {   
@@ -37,7 +37,7 @@ export const UPGRADES: Upgrade[] = [
         cost: 100, costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
-        requiredPoints: 0, 
+        requiredPoints: 100, 
         icon: PrerolledComponent 
     },
     {   
@@ -46,7 +46,7 @@ export const UPGRADES: Upgrade[] = [
         cost: 500, costIncrease: 1.16, 
         pointsIncrease: 4, 
         count: 0, 
-        requiredPoints: 0, 
+        requiredPoints: 1000, 
         icon: FarmComponent 
     },
     { 
@@ -56,7 +56,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 5, 
         count: 0, 
-        requiredPoints: 100, 
+        requiredPoints: 10000, 
         icon: CocaineComponent 
     },
     { 
@@ -66,7 +66,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 5, 
         count: 0, 
-        requiredPoints: 100, 
+        requiredPoints: 20000, 
         icon: GhbComponent
     },
     {   
@@ -75,7 +75,7 @@ export const UPGRADES: Upgrade[] = [
         cost: 5000, costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
-        requiredPoints: 0, 
+        requiredPoints: 50000, 
         icon: OxycodoneComponent 
     },
     { 
@@ -85,7 +85,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 10, 
         count: 0, 
-        requiredPoints: 200, 
+        requiredPoints: 100000, 
         icon: HeroinComponent
     },
     { 
@@ -95,7 +95,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 50, 
         count: 0, 
-        requiredPoints: 300, 
+        requiredPoints: 500000, 
         icon: MethComponent
     },
     { 
@@ -105,7 +105,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 100, 
         count: 0, 
-        requiredPoints: 400, 
+        requiredPoints: 1000000, 
         icon: HtrafficComponent 
     },
   ];
@@ -121,7 +121,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 1, 
         count: 0, 
-        requiredPoints: 0,
+        requiredPoints: 5,
         icon: BikeComponent
     },
     {
@@ -195,7 +195,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 50, 
         count: 0, 
-        requiredPoints: 0,
+        requiredPoints: 5000,
         icon: Ms13Component
     },
     { 
@@ -205,7 +205,7 @@ export const UPGRADES: Upgrade[] = [
         costIncrease: 1.16, 
         pointsIncrease: 50, 
         count: 0, 
-        requiredPoints: 0,
+        requiredPoints: 5000,
         icon: St18Component
     },
     { 
