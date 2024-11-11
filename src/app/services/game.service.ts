@@ -32,7 +32,6 @@ export class GameService {
   defenses$ = new BehaviorSubject<Defense[]>(this.defenses);
   achievements$ = new BehaviorSubject<Upgrade[]>([]);
 
-  public currentClickUpgrade$ = new BehaviorSubject<Upgrade[]>([]);
   public currentDefenses$ = new BehaviorSubject<Defense[]>(this.activeDefenses);
   public attackEvent$ = new Subject<Attack>();
 

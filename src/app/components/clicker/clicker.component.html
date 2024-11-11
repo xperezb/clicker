@@ -1,5 +1,5 @@
 <div #cashContainer></div>
-<button (click)="handleClick()">
+<button (click)="handleClick()" [disabled]="isAttackInProgress">
     <span class="button_top">
 
       <p style="font-family: 'Press Start 2P', cursive; font-size: 14px;">MAKE A DEAL</p> 
