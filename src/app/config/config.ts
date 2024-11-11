@@ -20,6 +20,7 @@ import { TruckComponent } from "../components/empire-view/components/truck/truck
 import { Defense } from "../interfaces/defense";
 import { Upgrade } from "../interfaces/upgrade";
 import { Attack } from "../interfaces/attack";
+import { AssaultComponent } from "../components/empire-view/components/assault/assault.component";
 
 export const UPGRADES: Upgrade[] = [
     {   
@@ -225,12 +226,12 @@ export const UPGRADES: Upgrade[] = [
         id: 1, 
         name: 'Gang Assault',
         points: 50, 
-        icon: FbiAgentComponent
+        icon: AssaultComponent
     },
     { 
         id: 2, 
         name: 'Police Raid',
         points: 100,
-        icon: PoliceComponent
+        icon: AssaultComponent
     }
 ]
