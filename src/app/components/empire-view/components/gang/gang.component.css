@@ -1,9 +1,10 @@
-.assault {
-    animation: assaultMove 10s linear forwards;
+.gang {
+    animation: gangMove 10s linear forwards;
+    z-index: 1!important;
   }
   
   /* Animación de desplazamiento lateral (de izquierda a derecha) */
-  @keyframes assaultMove {
+  @keyframes gangMove {
     0% {
       transform: translateX(-100vw); /* Comienza fuera de la pantalla a la izquierda */
       /* opacity: 1; */

@@ -20,7 +20,8 @@
     border: 1px solid #ccc;
     background-image: url('../../../assets/empty-city-long-road-along-260nw-1932192143.webp');
     background-size: cover;
-    background-position: center top; 
+    background-position: center top;
+    z-index: -1; 
 }
 
 .patrol-rectangle:not(:last-child) {

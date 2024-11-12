@@ -22,6 +22,7 @@
     background-image: url('../../../assets/warehouse_pixel_art_resized_570x230.png');
     background-size: fit;
     background-position: center bottom;
+    z-index: -1;
 }
 
 .guard-icon {

@@ -21,6 +21,7 @@ import { Defense } from "../interfaces/defense";
 import { Upgrade } from "../interfaces/upgrade";
 import { Attack } from "../interfaces/attack";
 import { AssaultComponent } from "../components/empire-view/components/assault/assault.component";
+import { GangComponent } from "../components/empire-view/components/gang/gang.component";
 
 export const UPGRADES: Upgrade[] = [
     {   
@@ -226,7 +227,7 @@ export const UPGRADES: Upgrade[] = [
         id: 1, 
         name: 'Gang Assault',
         points: 50, 
-        icon: AssaultComponent
+        icon: GangComponent
     },
     { 
         id: 2, 
